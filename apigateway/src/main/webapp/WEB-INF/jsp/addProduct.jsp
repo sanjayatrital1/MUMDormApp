@@ -11,7 +11,7 @@
 			<span>Category </span>
 			<select>
 				<option value="notebook">Notebook</option>
-				<option value="smartphone"><Smartphone></Smartphone></option>
+				<option value="smartphone">Smartphone</option>
 				<option value="accessories">Accessories</option>
 			</select>
 		</div>
