@@ -26,9 +26,15 @@ public class ProductController {
         return "home";
     }
 
-//    @PostMapping(value = "/product/", params = "uid")
-//    public String getUserProduct(@PathVariable long uid, Model model){
-//        model.addAttribute("userProduct",productProxy.get(uid));
-//        return "cart";
-//    }
+    @GetMapping(value = "/product/", params = "uid")
+    public String getUserProduct(@PathVariable long uid, Model model){
+        model.addAttribute("userProduct",productProxy.get(uid));
+        return "cart";
+    }
+
+    @PostMapping(value = "/product/")
+    public Long addProduct(Product product){
+        productProxy.add(product);
+        return product.getId();
+    }
 }

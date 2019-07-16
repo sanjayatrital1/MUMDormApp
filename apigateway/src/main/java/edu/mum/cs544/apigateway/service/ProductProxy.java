@@ -20,6 +20,7 @@ public class ProductProxy implements ProductService {
 
     private final String productUrl = "http://localhost:8082/product/{id}";
     private final String pplUrl = "http://localhost:8082/product/";
+    private final String addUrl ="http://localhost:8082/product?uid";
 
 
     @Override
@@ -38,7 +39,7 @@ public class ProductProxy implements ProductService {
 
     @Override
     public Long add(Product product) {
-        URI uri = restTemplate.postForLocation(pplUrl, product);
+        URI uri = restTemplate.postForLocation(addUrl, product);
         if (uri == null) {
             return null;
         }

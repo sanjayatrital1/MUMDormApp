@@ -26,9 +26,7 @@ public class Product {
     @NotEmpty
     private String productCategory;
     private boolean status;
-    @NotEmpty
     private double price;
-    @NotNull
     private int quantity;
     private String productDetail;
     private String image;
