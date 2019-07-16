@@ -1,6 +1,7 @@
 package edu.mum.cs544.apigateway.service;
 
 import edu.mum.cs544.apigateway.domain.Uzer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +14,16 @@ import java.util.List;
 @Component
 public class UserService implements IUserService {
 
+    private String userIp = "http://172.19.141.163:8082";
     @Resource
     private RestTemplate restTemplate;
 
 
 
-    private final String getByIdUrl="http://localhost:8082/users/search/{id}";
-    private final String getAllUrl="http://localhost:8082/users/all";
-    private final String getByEmailUrl="http://localhost:8082/users/all";
-    private final String postForSaveUrl="http://localhost:8082/users/create";
+    private final String getByIdUrl=userIp+"/users/search/{id}";
+    private final String getAllUrl=userIp+"/users/all";
+    private final String getByEmailUrl=userIp+"/users/all";
+    private final String postForSaveUrl=userIp+"/users/create";
 
     public List<Uzer> getAll() {
         //return userRepository.findAll(Sort.by("userName"));
