@@ -12,18 +12,18 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/8fd24b2ea7.js"></script>
+<%--    <script src="https://kit.fontawesome.com/8fd24b2ea7.js"></script>--%>
 <%--    <script src="resource/script/script.js"></script>--%>
 <%--    ${user != null ? null : "<script src='resource/script/checkCookies.js'></script>"}--%>
 <%--    <script src="resource/script/homeScript.js"></script>--%>
 
-    <link rel="stylesheet" href="../../../resources/static/css/style.css" />
-    <link rel="stylesheet" href="../../../resources/static/css/home.css" />
+    <link rel="stylesheet" href="../../resources/css/home.css" />
+    <link rel="stylesheet" href="../../resources/css/style.css" />
 
 </head>
 <body class="bg-light">
 <nav class="navbar navbar-light bg-dark justify-content-between">
-    <a class="navbar-brand" href="/">MUM STORE</a>
+    <a class="navbar-brand" href="/">Online Store</a>
     <div class="" id="smallbar">
         <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
             <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
@@ -61,13 +61,13 @@
     </ol>
     <div class="carousel-inner ">
         <div class="carousel-item active">
-            <img src="../../laptop.jpg" class="d-block w-100" alt="BANNER" class="img-responsive">
+            <img src="../../resources/img/laptop.jpg" class="d-block w-100" alt="BANNER" class="img-responsive">
         </div>
         <div class="carousel-item">
-            <img src="../../laptop.jpg" class="d-block w-100" alt="BANNER" class="img-responsive">
+            <img src="../../resources/img/iPhoneXsMax.jpg" class="d-block w-100" alt="BANNER" class="img-responsive">
         </div>
         <div class="carousel-item">
-            <img src="../../laptop.jpg" class="d-block w-100" alt="BANNER" class="img-responsive">
+            <img src="../../resources/img/macbookpro13.jpg" class="d-block w-100" alt="BANNER" class="img-responsive">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -121,6 +121,9 @@
                                     <p><h5>$${product.price}</h5></p>
 
                                 </div>
+                                    <div class="section">
+                                        <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                                    </div>
                             </div>
 
 

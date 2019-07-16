@@ -18,7 +18,7 @@ public class ProductController {
     ProductProxy productProxy;
     ObjectMapper mapper = new ObjectMapper();
 
-    @GetMapping("/abc/")
+    @GetMapping("/")
     public String getAll( Model model, Product product){
 //        product = mapper.readValue((DataInput) productProxy.get(id),Product.class);
         model.addAttribute("product",productProxy.getAllProduct());
