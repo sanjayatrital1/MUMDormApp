@@ -29,7 +29,7 @@
             <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
             </a> &nbsp;
-            <a href="/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
+            <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
             <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >

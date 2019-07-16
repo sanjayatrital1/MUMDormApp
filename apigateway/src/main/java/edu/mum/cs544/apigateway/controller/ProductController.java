@@ -23,6 +23,7 @@ public class ProductController {
 //        product = mapper.readValue((DataInput) productProxy.get(id),Product.class);
         model.addAttribute("product",productProxy.getAllProduct());
        // model.addAttribute("product",productProxy.getAllProduct());
+        //model.addAttribute("product",null);
         return "home";
     }
 
