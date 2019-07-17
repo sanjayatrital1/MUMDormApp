@@ -48,4 +48,6 @@ public class ProductController {
 //        productProxy.add(product);
         return "addProduct";
     }
+//    @GetMapping("/checkout")
+//    public
 }

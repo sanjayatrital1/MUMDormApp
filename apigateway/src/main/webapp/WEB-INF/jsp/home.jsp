@@ -32,9 +32,9 @@
             <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
-            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
-                <i class="fas fa-user-circle"></i> Login
-            </a> &nbsp;
+<%--            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >--%>
+<%--                <i class="fas fa-user-circle"></i> Login--%>
+<%--            </a> &nbsp;--%>
         </form>
         <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
             <a href="/product/" class="btn btn-success my-2 my-sm-0 btn-sm" >
