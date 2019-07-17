@@ -3,6 +3,7 @@ package edu.mum.cs544.apigateway.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -19,6 +20,7 @@ public class User {
     @SafeHtml
     @NotNull
     @Email
+    @UniqueElements(message = "already exists, try new email address")
     private String email;
 
     @NotNull
