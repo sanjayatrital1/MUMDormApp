@@ -103,7 +103,7 @@ public class UserController {
             model.addAttribute("username",result.getUserName());
             System.out.println("+++++++++++++++++++");
             System.out.println(model.containsAttribute("userId"));
-            return "redirect:/users/";
+            return "redirect:/";
         }
         else {
             redirectAttributes.addFlashAttribute("message","Email/Password not matched");

@@ -59,7 +59,7 @@
                 <!-- Display block of product-->
 
                 <div class="col-xs-4 item-photo">
-                    <img class="card-img-top id="product-img" src="../../resources/img/${productData.image}" alt="${productData.productName}" />
+                    <img class="card-img-top" id="product-img" src="../../resources/img/${productData.image}" alt="${productData.productName}" />
                 </div>
                 <h1>${productData.productName}</h1>
                 <h3>Price: $ ${productData.price}</h3>

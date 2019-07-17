@@ -16,7 +16,7 @@ public class CartProxy implements CartService {
     @Autowired
     private RestTemplate restTemplate;
 
-   private String productIp ="http://localhost:8083";//"http://172.19.141.122:8083";
+   private String productIp ="http://172.19.142.34:8083";//"http://172.19.141.122:8083";
     private final String getAllUrl = productIp+"/cart/{userId}";
     private final String addUrl = productIp+"/cart/";
     private final String deleteUrl =productIp+"/cart/remove/{id}";

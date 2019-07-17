@@ -2,7 +2,6 @@ package edu.mum.cs544.apigateway.domain;
 
 import lombok.Data;
 
-import javax.persistence.OneToOne;
 
 @Data
 public class Cart {

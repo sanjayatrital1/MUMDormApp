@@ -61,8 +61,8 @@ public class ProductController {
         return new RedirectView("/product/" + id);
     }
 
-    @GetMapping(value = "/product/", params = "category")
-    public List<Product>findByCategory(@RequestParam String category){
+    @GetMapping(value = "/product/category/{category}")
+    public List<Product>findByCategory(@PathVariable String category){
         return productService.searchByCategory(category);
     }
 

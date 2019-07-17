@@ -102,10 +102,10 @@
 
 
             <div class="list-group" id="theFixed">
-                <a data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
-                <a data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
-                <a data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
-                <a data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
+                <a href="/filter/all" data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
+                <a href="/filter/NB" data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
+                <a href="/filter/SP" data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
+                <a href="/filter/AC" data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
             </div>
 
         </div>

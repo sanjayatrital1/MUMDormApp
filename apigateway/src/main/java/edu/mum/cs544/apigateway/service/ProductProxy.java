@@ -27,6 +27,7 @@ public class ProductProxy implements ProductService {
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
     private final String addUrl =productIp+"/product/?uid=";
+    private final String findByCategory = productIp+"/product/category/";
 
 
     @Override
@@ -67,8 +68,20 @@ public class ProductProxy implements ProductService {
     public void update(Product product) {
         restTemplate.put(productUrl, product, product.getId());
     }
+
+    @Override
+    public List<Product> getProductByCategory(String category) {
+        System.out.println("category ip ==="+findByCategory+category);
+        ResponseEntity<List<Product>> response =
+                restTemplate.exchange(findByCategory+category, HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<Product>>() {
+                        });
+        return response.getBody();
+    }
 //    @Override
 //    public List<Product>getUserProduct(long id){
 //
 //    }
+
+
 }

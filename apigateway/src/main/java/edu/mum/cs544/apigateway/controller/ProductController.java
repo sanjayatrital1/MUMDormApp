@@ -39,9 +39,9 @@ public class ProductController {
     public String getAll( Model model, Product product){
         model.addAttribute("product",productProxy.getAllProduct());
 
-        List<Cart> carts = cartProxy.getAll(1);
-        model.addAttribute("items", carts.size());
-        model.addAttribute("cart", carts);
+//        List<Cart> carts = cartProxy.getAll(1);
+//        model.addAttribute("items", carts.size());
+//        model.addAttribute("cart", carts);
         return "home";
     }
 
@@ -104,5 +104,17 @@ public class ProductController {
     public String getProduct(@PathVariable long id ,Model model){
         model.addAttribute("productData",productProxy.get(id));
         return "product";
+    }
+
+    @GetMapping(value = "/filter/{category}")
+    public String filterProduct(@PathVariable String category,Model model){
+        System.out.println("value of category= "+category);
+        if(category.equals("all")){
+            model.addAttribute("product",productProxy.getAllProduct());
+        }
+        else{
+            model.addAttribute("product",productProxy.getProductByCategory(category));
+        }
+    return "home";
     }
 }
