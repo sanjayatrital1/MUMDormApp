@@ -13,7 +13,7 @@
 			<tr>
 				<td>Email</td>
 				<td><form:input path="email" /></td>
-				<td><form:errors path="email" /></td>
+				<td>${msg}<form:errors path="email" /></td>
 			</tr>
 			<tr>
 				<td>Password</td>

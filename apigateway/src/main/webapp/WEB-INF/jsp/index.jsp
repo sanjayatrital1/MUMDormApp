@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,10 +33,10 @@
         <a href="/users/signin" class="btn btn-secondary">Sign In</a>
         <span style="color: #ffffff; margin-top:9px;">&nbsp;</span>
         <a href="/users/signup" class="btn btn-secondary">Sign Up</a>&nbsp;
-        <form id="searchform" class="form-inline my-2 my-lg-0" onsubmit="search()">
-            <input class="form-control mr-sm-2" type="number" placeholder="Search by User Id" aria-label="Search" name="searchUser">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+<%--        <form id="searchform" class="form-inline my-2 my-lg-0" onsubmit="search()">--%>
+<%--            <input class="form-control mr-sm-2" type="number" placeholder="Search by User Id" aria-label="Search" name="searchUser">--%>
+<%--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
+<%--        </form>--%>
     </div>
 </nav>
 

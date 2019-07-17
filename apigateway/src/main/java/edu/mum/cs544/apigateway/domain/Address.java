@@ -3,6 +3,7 @@ package edu.mum.cs544.apigateway.domain;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.NumberFormat;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
 
@@ -12,15 +13,13 @@ public class Address {
     @NotEmpty
     private String address;
 
-    @NumberFormat(pattern = "###")
-    private Long dormNumber;
-    @NumberFormat(pattern = "###")
-    private Long roomNumber;
+    private String dormNumber;
+    private String roomNumber;
 
     public Address() {
     }
 
-    public Address(String address, Long dormNumber, Long roomNumber) {
+    public Address(String address, String dormNumber, String roomNumber) {
         this.address = address;
         this.dormNumber = dormNumber;
         this.roomNumber = roomNumber;
@@ -42,19 +41,19 @@ public class Address {
         this.address = address;
     }
 
-    public Long getDormNumber() {
+    public String getDormNumber() {
         return dormNumber;
     }
 
-    public void setDormNumber(Long dormNumber) {
+    public void setDormNumber(String dormNumber) {
         this.dormNumber = dormNumber;
     }
 
-    public Long getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(Long roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 }
