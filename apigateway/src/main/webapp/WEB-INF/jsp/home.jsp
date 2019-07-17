@@ -32,7 +32,9 @@
             <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
-            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
+
+            <!-- place holder for login data-toggle="modal" data-target="#login-modal"-->
+            <a href="/users/signin" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-user-circle"></i> Login
             </a> &nbsp;
         </form>
@@ -159,15 +161,15 @@
 
             </div>
             <div class="modal-body">
-                <form action="/auth" method="post">
-                    <input type="text" name="user" placeholder="Username">
-                    <input type="password" name="pass" placeholder="Password">
+                <form:form action="/users/login" method="post">
+                    <input type="email" name="email" placeholder="Email: example@mum.com"/>
+                    <input type="password" name="password" placeholder="Password">
                     <div class="dropdown-divider"></div>
                     <input type="submit" name="login" class="login btn btn-success" value="Login">
 
                 </form>
                 <div class="login-help">
-                    <label>Please click  </label><a href="pages/signup.jsp"> Register </a><span> If you dont have an Account.</span>
+                    <label>Please click  </label><a href="/users/signup"> Register </a><span> If you dont have an Account.</span>
                 </div>
             </div>
 

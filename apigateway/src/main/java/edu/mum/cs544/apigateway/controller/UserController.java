@@ -1,14 +1,15 @@
 package edu.mum.cs544.apigateway.controller;
 
 import edu.mum.cs544.apigateway.domain.User;
-import edu.mum.cs544.apigateway.domain.Uzer;
 import edu.mum.cs544.apigateway.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -39,12 +40,13 @@ public class UserController {
 
     @GetMapping("/signup")
     public String signupform(Model model){
-        model.addAttribute("user", new Uzer());
+        model.addAttribute("user", new User());
         return "signup";
     }
 
     @PostMapping("/create")
-    public String addUser(@Valid @ModelAttribute Uzer user, BindingResult result, Model model){
+    public String addUser(@Valid @ModelAttribute User user, BindingResult result, Model model){
+        System.out.println(user);
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "signup";
@@ -60,7 +62,7 @@ public class UserController {
         return "changeDetail";
     }
     @PostMapping("/modify")
-    public String saveUpdate(@ModelAttribute Uzer user, BindingResult result, Model model){
+    public String saveUpdate(@ModelAttribute User user, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "redirct:/modify";
@@ -81,11 +83,22 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String checkLogIn(String email, String password){
-        userService.getUserByEmail(email);
+    public String checkLogIn(String email, String password, HttpSession session, RedirectAttributes redirectAttributes){
         System.out.println("printing user input");
         System.out.println(email+"\n"+password);
-        return "redirect:/users/all";
+        User user=new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        Long result=userService.getUserIdByObject(user);
+        System.out.println("result from query" +result);
+        if(result!=null){
+            session.setAttribute("userId", result);
+            return "home";
+        }
+        else {
+            redirectAttributes.addFlashAttribute("message","Email/Password not matched");
+            return "redirect:/users/signin";
+        }
 
     }
 }
