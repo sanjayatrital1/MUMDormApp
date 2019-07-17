@@ -3,7 +3,6 @@ package edu.mum.cs544.apigateway.controller;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.mum.cs544.apigateway.domain.Product;
-import edu.mum.cs544.apigateway.domain.Uzer;
 import edu.mum.cs544.apigateway.service.ProductProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
+@SessionAttributes({"username","userId"})
 @RequestMapping(value = "/users")
 public class UserController {
 
@@ -83,17 +84,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String checkLogIn(String email, String password, HttpSession session, RedirectAttributes redirectAttributes){
-        System.out.println("printing user input");
-        System.out.println(email+"\n"+password);
+    public String checkLogIn(String email, String password, Model model, RedirectAttributes redirectAttributes){
+//        System.out.println("printing user input");
+//        System.out.println(email+"\n"+password);
         User user=new User();
         user.setEmail(email);
         user.setPassword(password);
-        Long result=userService.getUserIdByObject(user);
-        System.out.println("result from query" +result);
+        String result=userService.getUserByObject(user);
+//        System.out.println("result from query" +result);
         if(result!=null){
-            session.setAttribute("userId", result);
-            return "home";
+            model.addAttribute("userId", result);
+            model.addAttribute("username",result);
+            return "redirect:/users/";
         }
         else {
             redirectAttributes.addFlashAttribute("message","Email/Password not matched");
