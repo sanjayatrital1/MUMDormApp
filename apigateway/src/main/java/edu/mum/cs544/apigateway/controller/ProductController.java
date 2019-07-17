@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@SessionAttributes({"username","userId"})
 public class ProductController {
     @Autowired
     ProductProxy productProxy;

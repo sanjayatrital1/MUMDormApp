@@ -58,13 +58,8 @@ public class UserController {
         userService.delete(id);
     }
 
-    @GetMapping("/lookupuser/{email}/{password}")
-    public User getUserId(@PathVariable String email,@PathVariable String password){
-        System.out.println(email);
-        return userService.lookupByEmailAndPassword(email,password);
-    }
     @GetMapping("/lookupbyemail/{email}")
-    public User findUserIdFromEmail(@PathVariable String email){
+    public User findUserFromEmail(@PathVariable String email){
         return userService.lookupByEmail(email);
     }
 

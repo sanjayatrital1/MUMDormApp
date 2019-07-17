@@ -55,7 +55,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a data-toggle="modal" data-target="#cart-modal" class="dropdown-item" ><i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
+                    <a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
                 </div>
             </li>
         </form>

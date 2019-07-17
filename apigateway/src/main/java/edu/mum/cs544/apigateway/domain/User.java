@@ -3,13 +3,9 @@ package edu.mum.cs544.apigateway.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.UniqueElements;
-
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 @Data
 public class User {

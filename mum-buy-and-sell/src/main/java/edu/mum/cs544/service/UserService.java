@@ -32,7 +32,7 @@ public class UserService implements IUserService {
 
     @Override
     public User lookupByEmailAndPassword(String email, String password) {
-        return userRepository.fetchUserIdFromEmailAndPassword(email, password);
+        return userRepository.fetchUserFromEmailAndPassword(email, password);
     }
 
     @Override
