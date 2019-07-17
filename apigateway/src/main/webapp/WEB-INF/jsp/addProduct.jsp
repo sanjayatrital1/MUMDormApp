@@ -3,34 +3,39 @@
 
 <div class="container">
 	<h1>Add Product</h1>
-	<form:form action="/product" method="post">
-		<div>
-			<span>Product Name: </span><input type="text" name="productname"/>
-		</div>
-		<div>
-			<span>Category </span>
-			<select>
-				<option value="notebook">Notebook</option>
-<<<<<<< HEAD
-				<option value="smartphone"><Smartphone></Smartphone></option>
-=======
-				<option value="smartphone">Smartphone</option>
->>>>>>> ca611fddeb5dcddbe6195598bf54ffc23d9652b3
-				<option value="accessories">Accessories</option>
-			</select>
-		</div>
-		<div>
-			<span>Price: </span><input type="text" name="price"/>
-		</div>
-		<div>
-			<span>Quantity: </span><input type="number" name="quantity"/>
-		</div>
-		<div>
-			<span>Detail: </span><input type="text" name="detail"/>
-		</div>
-		<div>
-			<span>Image: </span><input type="file" name="image" accept="image/*">
-		</div>
+	<form:form modelAttribute="product" action="/product" method="post">
+		<table>
+			<tr>
+				<td>Product Name</td>
+				<td><form:input path="userName" /></td>
+				<td><form:errors path="userName" /></td>
+			</tr>
+			<tr>
+				<td>Category</td>
+				<td><form:input path="category" /></td>
+				<td><form:errors path="category" /></td>
+			</tr>
+			<tr>
+				<td>Price</td>
+				<td><form:password path="price" /></td>
+				<td><form:errors path="price" /></td>
+			</tr>
+			<tr>
+				<td>Quantity</td>
+				<td><form:input path="quantity" /></td>
+				<td><form:errors path="quantity" /></td>
+			</tr>
+			<tr>
+				<td>Detail</td>
+				<td><form:input path="detail" /></td>
+				<td><form:errors path="detail" /></td>
+			</tr>
+			<tr>
+				<td>Image</td>
+				<td><form:input path="image" /></td>
+				<td><form:errors path="image" /></td>
+			</tr>
+		</table>
 		<button type="submit" class="btn btn-outline-success">Add Product</button>
 	</form:form>
 </div>
