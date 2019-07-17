@@ -25,21 +25,20 @@
 <nav class="navbar navbar-light bg-dark justify-content-between">
     <a class="navbar-brand" href="/">Online Store</a>
     <div class="" id="smallbar">
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
             <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
             </a> &nbsp;
             <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
-            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
+
+            <!-- place holder for login data-toggle="modal" data-target="#login-modal"-->
+            <a href="/users/signin" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-user-circle"></i> Login
             </a> &nbsp;
         </form>
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
-            <a href="/product/" class="btn btn-success my-2 my-sm-0 btn-sm" >
-                <i class="fas fa-sign-in-alt"></i> Add Product
-            </a>
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user-circle"></i> ${username}
@@ -48,6 +47,7 @@
                     <a data-toggle="modal" data-target="#cart-modal" class="dropdown-item" ><i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
+                    <a class="dropdown-item" href="/product/add"><i class="fas fa-sign-out-alt"></i> Add Product</a>
                 </div>
             </li>
         </form>
@@ -161,15 +161,15 @@
 
             </div>
             <div class="modal-body">
-                <form action="/auth" method="post">
-                    <input type="text" name="user" placeholder="Username">
-                    <input type="password" name="pass" placeholder="Password">
+                <form:form action="/users/login" method="post">
+                    <input type="email" name="email" placeholder="Email: example@mum.com"/>
+                    <input type="password" name="password" placeholder="Password">
                     <div class="dropdown-divider"></div>
                     <input type="submit" name="login" class="login btn btn-success" value="Login">
 
                 </form>
                 <div class="login-help">
-                    <label>Please click  </label><a href="pages/signup.jsp"> Register </a><span> If you dont have an Account.</span>
+                    <label>Please click  </label><a href="/users/signup"> Register </a><span> If you dont have an Account.</span>
                 </div>
             </div>
 

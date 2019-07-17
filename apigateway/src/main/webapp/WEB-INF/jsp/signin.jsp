@@ -13,6 +13,9 @@
 		<button type="submit" class="btn btn-outline-success">Sign-In</button>
 	</form:form>
 </div>
+
+<div><p>${message}</p></div>
+
 </body>
 
 </html>
