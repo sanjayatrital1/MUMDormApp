@@ -38,7 +38,14 @@
                 <i class="fas fa-user-circle"></i> Login
             </a> &nbsp;
         </form>
+
+
+
         <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+            <a href="/product" class="btn btn-success my-2 my-sm-0 btn-sm" >
+                <i class="fas fa-sign-in-alt"></i> Add Product
+            </a>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user-circle"></i> ${username}
