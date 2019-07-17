@@ -22,7 +22,7 @@ public class ProductProxy implements ProductService {
    private String productIp ="http://172.19.141.122:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
-    private final String addUrl =productIp+"/product?uid";
+    private final String addUrl =productIp+"/product/?uid=1";
 
 
     @Override
@@ -40,25 +40,27 @@ public class ProductProxy implements ProductService {
     }
 
     @Override
-    public Long add(Product product) {
-        URI uri = restTemplate.postForLocation(addUrl, product);
-        if (uri == null) {
-            return null;
-        }
-        Matcher m = Pattern.compile(".*/product/(\\d+)").matcher(uri.getPath());
-        m.matches();
-        return Long.parseLong(m.group(1));
+    public void add(Product product) {
+       restTemplate.postForLocation(addUrl, product);
+//        if (uri == null) {
+//            return null;
+//        }
+//        Matcher m = Pattern.compile(".*/product/(\\d+)").matcher(uri.getPath());
+//        m.matches();
+//        return Long.parseLong(m.group(1));
     }
 
     @Override
     public void delete(long id) {
-
         restTemplate.delete(productUrl, id);
     }
 
     @Override
     public void update(Product product) {
-
         restTemplate.put(productUrl, product, product.getId());
     }
+//    @Override
+//    public List<Product>getUserProduct(long id){
+//
+//    }
 }

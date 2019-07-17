@@ -1,9 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="index.jsp" />
+<%--<jsp:include page="home.jsp" />--%>
 
 <div class="container">
 	<h1>Add Product</h1>
-	<form:form action="/product" method="post">
+	<form:form action="/product/" method="post">
 		<div>
 			<span>Product Name: </span><input type="text" name="productname"/>
 		</div>
@@ -11,11 +11,10 @@
 			<span>Category </span>
 			<select>
 				<option value="notebook">Notebook</option>
-<<<<<<< HEAD
-				<option value="smartphone"><Smartphone></Smartphone></option>
-=======
+
+
 				<option value="smartphone">Smartphone</option>
->>>>>>> ca611fddeb5dcddbe6195598bf54ffc23d9652b3
+
 				<option value="accessories">Accessories</option>
 			</select>
 		</div>
