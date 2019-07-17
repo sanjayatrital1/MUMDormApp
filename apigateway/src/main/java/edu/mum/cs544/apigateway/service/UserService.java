@@ -17,7 +17,7 @@ public class UserService implements IUserService {
     private RestTemplate restTemplate;
 
 
-    private final String userUrl="http://localhost:8082/users";
+    private final String userUrl="http://172.19.142.32:8082/users";
     private final String getByIdUrl=userUrl+"/search/{id}";
     private final String getAllUrl=userUrl+"/all";
     private final String getByEmailPasswordUrl=userUrl+"/lookupuser/{email}/{password}";

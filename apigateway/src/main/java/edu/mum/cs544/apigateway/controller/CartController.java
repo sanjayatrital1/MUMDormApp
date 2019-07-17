@@ -30,7 +30,7 @@ public class CartController {
     }
 
     @GetMapping("/cart/remove/{id}")
-    public String    removeCartItem(@PathVariable(name = "id") long id ){
+    public String  removeCartItem(@PathVariable(name = "id") long id ){
         cartProxy.delete(id);
         return "redirect:/";
     }

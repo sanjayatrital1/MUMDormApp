@@ -19,7 +19,7 @@ public class ProductProxy implements ProductService {
     @Autowired
     private RestTemplate restTemplate;
 
-   private String productIp ="http://localhost:8083";//"http://172.19.141.122:8083";
+   private String productIp ="http://172.19.142.32:8083";//"http://localhost:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
     private final String addUrl =productIp+"/product/?uid=1";
