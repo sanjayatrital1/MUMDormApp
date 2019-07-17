@@ -7,8 +7,8 @@
 		<table>
 			<tr>
 				<td>Product Name</td>
-				<td><form:input path="userName" /></td>
-				<td><form:errors path="userName" /></td>
+				<td><form:input path="productName" /></td>
+				<td><form:errors path="productName" /></td>
 			</tr>
 			<tr>
 				<td>Category</td>
