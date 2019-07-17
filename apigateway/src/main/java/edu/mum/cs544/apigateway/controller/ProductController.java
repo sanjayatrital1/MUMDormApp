@@ -33,19 +33,17 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product/")
-    public String addProduct( @ModelAttribute Product product, BindingResult result, Model model){
-        model.addAttribute("product");
+    public String addProduct(@ModelAttribute Product product, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "addProduct";
         }
-        System.out.println(product.getProductName());
         productProxy.add(product);
-        return "redirect:/home";
+        return "redirect:/";
     }
-    @GetMapping(value = "/product/")
-    public String getProduct(Product product){
-//        productProxy.add(product);
+    @GetMapping(value = "/product")
+    public String getProduct(Model model){
+       model.addAttribute("product",new Product());
         return "addProduct";
     }
 //    @GetMapping("/checkout")
