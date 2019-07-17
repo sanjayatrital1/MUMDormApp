@@ -31,6 +31,16 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User lookupByEmailAndPassword(String email, String password) {
+        return userRepository.fetchUserIdFromEmailAndPassword(email, password);
+    }
+
+    @Override
+    public User lookupByEmail(String email) {
+        return userRepository.fetchUserFromEmail(email);
+    }
+
+    @Override
     public void update(User change) {
         userRepository.save(change);
     }

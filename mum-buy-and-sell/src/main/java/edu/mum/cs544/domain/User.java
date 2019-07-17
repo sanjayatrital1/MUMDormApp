@@ -22,7 +22,7 @@ public class User {
 
     @SafeHtml
     @NotNull
-    @Email
+    @Email(message = "example@mum.edu")
     private String email;
 
     @NotNull
@@ -36,11 +36,16 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String email, String password) {
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-    }
+//    public User(String email, String password){
+//        this.email=email;
+//        this.password=password;
+//    }
+
+//    public User(String userName, String email, String password) {
+//        this.userName = userName;
+//        this.email = email;
+//        this.password = password;
+//    }
 
     public Long getUid() {
         return uid;

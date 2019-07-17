@@ -14,4 +14,10 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 
     @Query("from User u left join u.addr a where u.uid=?1")
     User fetchUserFromId(long id);
+
+    @Query("from User u where u.email=?1 and u.password=?2")
+    User fetchUserIdFromEmailAndPassword(String email,String password);
+
+    @Query("from User u left join u.addr a where u.email=?1")
+    User fetchUserFromEmail(String email);
 }

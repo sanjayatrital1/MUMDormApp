@@ -31,6 +31,7 @@ public class UserController {
 
     @PostMapping("/create")
     public RedirectView addUser(@RequestBody User user){
+        System.out.println(user);
         userService.addUser(user);
         return new RedirectView("/users/all");
     }
@@ -57,4 +58,28 @@ public class UserController {
         userService.delete(id);
     }
 
+    @GetMapping("/lookupuser/{email}/{password}")
+    public User getUserId(@PathVariable String email,@PathVariable String password){
+        System.out.println(email);
+        return userService.lookupByEmailAndPassword(email,password);
+    }
+    @GetMapping("/lookupbyemail/{email}")
+    public User findUserIdFromEmail(@PathVariable String email){
+        return userService.lookupByEmail(email);
+    }
+
+
+    @PostMapping("/lookupbyobject/")
+    public User findUserIdFromObject(@RequestBody User object){
+        String email=object.getEmail();
+        String password=object.getPassword();
+        System.out.println("request received");
+        User user=userService.lookupByEmailAndPassword(email,password);
+        System.out.println("request responding");
+        System.out.println(user);
+        if(user==null)
+            return user;
+        user.setPassword("");
+        return user;
+    }
 }
