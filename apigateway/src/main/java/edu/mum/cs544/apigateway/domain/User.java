@@ -20,7 +20,7 @@ public class User {
     @SafeHtml
     @NotNull
     @Email
-    @UniqueElements(message = "already exists, try new email address")
+//    @UniqueElements(message = "already exists, try new email address")
     private String email;
 
     @NotNull
