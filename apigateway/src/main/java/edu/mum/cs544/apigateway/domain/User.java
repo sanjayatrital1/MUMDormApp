@@ -20,6 +20,7 @@ public class User {
     @SafeHtml
     @NotNull
     @Email
+
     private String email;
 
     @NotNull
