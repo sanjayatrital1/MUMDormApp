@@ -71,7 +71,12 @@
                 </div>
                 <div class="section">
                     <br />
-                    <input type="submit" class="btn btn-success" value="Add to cart">
+                    <div class="section ${username != null ? "dnone":null} ">
+                        <a href="/users/signin">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                    </div>
+                    <div class="section ${username == null ? "dnone":null} ">
+                        <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                    </div>
                 </div>
 
             </div>

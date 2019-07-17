@@ -1,6 +1,7 @@
 package edu.mum.cs544.productmanagement.controller;
 
 import edu.mum.cs544.productmanagement.domain.Product;
+import edu.mum.cs544.productmanagement.service.IProductService;
 import edu.mum.cs544.productmanagement.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-   private ProductServiceImpl productService;
+   private IProductService productService;
 
     @GetMapping("/product/")
     public List<Product>getAll(){
