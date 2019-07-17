@@ -5,9 +5,11 @@ import lombok.Data;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.UniqueElements;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Data
 public class User {
@@ -19,7 +21,7 @@ public class User {
 
     @SafeHtml
     @NotNull
-    @Email
+    @Email(message="Try format like: example@mum.edu")
     private String email;
 
     @NotNull
@@ -29,17 +31,6 @@ public class User {
 
     public User() {
     }
-
-//    public User(String email, String password){
-//        this.email=email;
-//        this.password=password;
-//    }
-//
-//    public User(String userName, String email, String password) {
-//        this.userName = userName;
-//        this.email = email;
-//        this.password = password;
-//    }
 
     public Long getUid() {
         return uid;
