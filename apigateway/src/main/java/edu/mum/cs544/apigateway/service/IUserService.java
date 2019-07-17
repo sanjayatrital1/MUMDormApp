@@ -13,5 +13,5 @@ public interface IUserService {
     public void update(User user);
     public void delete(long id);
     public Long getUserIdByEmail(String email, String password);
-    public String getUserByObject(User user);
+    public User getUserByObject(User user);
 }

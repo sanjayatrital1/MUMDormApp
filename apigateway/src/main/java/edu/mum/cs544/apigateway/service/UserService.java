@@ -69,11 +69,11 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String getUserByObject(User testUser) {
+    public User getUserByObject(User testUser) {
         User user= restTemplate.postForObject(getByObjUrl,testUser,User.class);
         if (user==null)
             return null;
-        return user.getUserName();
+        return user;
     }
 
 

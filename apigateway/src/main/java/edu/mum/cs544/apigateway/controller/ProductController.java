@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@SessionAttributes({"username","userId"})
 public class ProductController {
     @Autowired
     ProductProxy productProxy;
@@ -36,14 +37,14 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product/")
-    public String addProduct(@ModelAttribute Product product, BindingResult result, Model model, HttpSession session){
+    public String addProduct(@ModelAttribute("userId") String userId,@ModelAttribute Product product, BindingResult result, Model model, HttpSession session){
 
+        System.out.println("User Id= "+userId);
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "addProduct";
         }
-        String uid = (String) session.getAttribute("userId");
-        productProxy.add(product, uid);
+        productProxy.add(product, userId);
         return "redirect:/";
     }
     @GetMapping(value = "/product")

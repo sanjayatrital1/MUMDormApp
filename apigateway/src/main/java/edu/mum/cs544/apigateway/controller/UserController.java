@@ -84,17 +84,19 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String checkLogIn(String email, String password, Model model, RedirectAttributes redirectAttributes){
+    public String checkLogIn(String email, String password, Model model, RedirectAttributes redirectAttributes, HttpSession session){
 //        System.out.println("printing user input");
 //        System.out.println(email+"\n"+password);
         User user=new User();
         user.setEmail(email);
         user.setPassword(password);
-        String result=userService.getUserByObject(user);
+        User result=userService.getUserByObject(user);
 //        System.out.println("result from query" +result);
         if(result!=null){
-            model.addAttribute("userId", user.getUid());
-            model.addAttribute("username",result);
+            model.addAttribute("userId",result.getUid() );
+            model.addAttribute("username",result.getUserName());
+            System.out.println("+++++++++++++++++++");
+            System.out.println(model.containsAttribute("userId"));
             return "redirect:/users/";
         }
         else {
