@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.sql.Blob;
 
 @Entity
 @Data
@@ -26,9 +27,7 @@ public class Product {
     @NotEmpty
     private String productCategory;
     private boolean status;
-    @NotEmpty
     private double price;
-    @NotNull
     private int quantity;
     private String productDetail;
     private String image;

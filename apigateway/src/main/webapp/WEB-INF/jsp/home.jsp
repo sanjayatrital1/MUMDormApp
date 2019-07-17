@@ -29,14 +29,25 @@
             <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
             </a> &nbsp;
-            <a href="/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
+            <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
-            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
+
+            <!-- place holder for login data-toggle="modal" data-target="#login-modal"-->
+            <a href="/users/signin" class="btn btn-outline-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-user-circle"></i> Login
             </a> &nbsp;
         </form>
+
+
+
         <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+
+            <a href="/product" class="btn btn-success my-2 my-sm-0 btn-sm" >
+                <i class="fas fa-sign-in-alt"></i> Add Product
+            </a>
+
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user-circle"></i> ${username}
@@ -91,10 +102,10 @@
 
 
             <div class="list-group" id="theFixed">
-                <a data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
-                <a data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
-                <a data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
-                <a data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
+                <a href="/filter/all" data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
+                <a href="/filter/NB" data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
+                <a href="/filter/SP" data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
+                <a href="/filter/AC" data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
             </div>
 
         </div>
@@ -103,17 +114,17 @@
         <div class="col">
 
 
-            <div class="row my-4" id="showData">
+            <div class="row my-4 " id="showData">
                 <div class="display">
                     <div class="row" id="appendData">
                         <c:forEach var="product" items="${product}">
 
                             <div class="card custom-card">
-                                ${product.image}
-<%--                                <a href="/product?id=${data[i].id}">--%>
+                              <a href="/productPage/${product.id}" >
+                            <%--                                <a href="/product?id=${data[i].id}">--%>
 <%--                                --%>
-<%--                                    <img class="card-img-top" src="${data[i].picture}" alt="${data[i].name}"/>--%>
-<%--                                </a>--%>
+                                    <img class="card-img-top" src="../../resources/img/${product.image}" alt="${product.productName}"/>
+                                </a>
                                 <div class="card-body text-truncate">
                                     <h4 class="card-title">
                                         <p><h5>${product.productName}</h5></p>
@@ -122,7 +133,7 @@
 
                                 </div>
                                     <div class="section">
-                                        <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                                            <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                                     </div>
                             </div>
 
@@ -158,15 +169,15 @@
 
             </div>
             <div class="modal-body">
-                <form action="/auth" method="post">
-                    <input type="text" name="user" placeholder="Username">
-                    <input type="password" name="pass" placeholder="Password">
+                <form:form action="/users/login" method="post">
+                    <input type="email" name="email" placeholder="Email: example@mum.com"/>
+                    <input type="password" name="password" placeholder="Password">
                     <div class="dropdown-divider"></div>
                     <input type="submit" name="login" class="login btn btn-success" value="Login">
 
                 </form>
                 <div class="login-help">
-                    <label>Please click  </label><a href="pages/signup.jsp"> Register </a><span> If you dont have an Account.</span>
+                    <label>Please click  </label><a href="/users/signup"> Register </a><span> If you dont have an Account.</span>
                 </div>
             </div>
 
@@ -178,24 +189,24 @@
 <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content card-body text-left">
-<%--            Cart (${items > 0 ? items : 0})--%>
+          Cart (${items > 0 ? items : 0})
             <h3><i class="fas fa-shopping-cart"></i> cart here</h3>
             <div class="dropdown-divider"></div>
 
             <!-- repeat this for each product -->
-<%--            <c:forEach items="${cart}" var="product">--%>
-<%--                <div id="cartshow" class="row">--%>
-<%--                    <div class="col-sm-3 text-right">--%>
-<%--                        <img src="<c:url value="${product[3]}"  />"  alt="<c:out value="${product[0]}" />">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-5">--%>
-<%--                        <h6 class="mt-0"><c:out value="${product[0]}" /></h6>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-4 text-left">--%>
-<%--                        <span>Quantity <strong><c:out value="${product[6]}" /></strong></span>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
+            <c:forEach items="${cart}" var="item">
+                <div id="cartshow" class="row">
+
+                    <div class="col-sm-5">
+                        <h6 class="mt-0"><c:out value="${item.getProductName()}" /></h6>
+                    </div>
+                    <div class="col-sm-4 text-left">
+                        <span>Quantity <strong><c:out value="${item.getQuantity()}" /></strong></span>
+                    </div> <div class="col-sm-3 text-left">
+                       <a href="/cart/remove/${item.getId()}">&Chi;</a>
+                    </div>
+                </div>
+            </c:forEach>
 
             <div class="my-4 text-center emptyCart ${items > 0 ? "dnone" : null}">
                 <h3><i class="far fa-frown fa-lg"></i></h3>

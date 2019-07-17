@@ -1,6 +1,6 @@
 package edu.mum.cs544.apigateway.service;
 
-import edu.mum.cs544.apigateway.domain.Uzer;
+import edu.mum.cs544.apigateway.domain.User;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -16,34 +16,37 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
+private String userIp ="http://172.19.142.34:8082";
+
+    private final String getByIdUrl=userIp+"/users/search/{id}";
+    private final String getAllUrl=userIp+"/users/all";
+    private final String getByEmailPasswordUrl=userIp+"/users/lookupuser/{email}/{password}";
+    private final String getByEmailUrl=userIp+"/users/lookupbyemail/{email}";
+    private final String postForSaveUrl=userIp+"/users/create";
+    private final String getByObjUrl=userIp+"/users/lookupbyobject/";
 
 
-    private final String getByIdUrl="http://localhost:8082/users/search/{id}";
-    private final String getAllUrl="http://localhost:8082/users/all";
-    private final String getByEmailUrl="http://localhost:8082/users/all";
-    private final String postForSaveUrl="http://localhost:8082/users/create";
-
-    public List<Uzer> getAll() {
+    public List<User> getAll() {
         //return userRepository.findAll(Sort.by("userName"));
-        ResponseEntity<List<Uzer>> usersList=restTemplate.exchange(getAllUrl, HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<Uzer>>() {});
+        ResponseEntity<List<User>> usersList=restTemplate.exchange(getAllUrl, HttpMethod.GET,
+                null, new ParameterizedTypeReference<List<User>>() {});
         return usersList.getBody();
     }
 
 
-    public void addUser(Uzer newUser) {
+    public void addUser(User newUser) {
         restTemplate.postForLocation(postForSaveUrl,newUser);
 
     }
 
 
-    public Uzer getUser(long id) {
+    public User getUser(long id) {
         //return userRepository.findById(id).orElse(null);
-        return restTemplate.getForObject(getByIdUrl, Uzer.class, id);
+        return restTemplate.getForObject(getByIdUrl, User.class, id);
     }
 
 
-    public void update(Uzer change) {
+    public void update(User change) {
 //        userRepository.save(change);
     }
 
@@ -53,8 +56,25 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Uzer getUserByEmail(String email) {
-        return restTemplate.getForObject(getByEmailUrl, Uzer.class, email);
+    public Long getUserIdByEmail(String email, String password) {
+        Long userId=restTemplate.getForObject(getByEmailPasswordUrl,Long.class,email,password);
+        System.out.println("User Id is :"+userId);
+        return userId;
+    }
+
+
+    public User getUserByEmail(String email) {
+        User user=restTemplate.getForObject(getByEmailUrl,User.class,email);
+        //System.out.println("User Id is :"+user);
+        return user;
+    }
+
+    @Override
+    public User getUserByObject(User testUser) {
+        User user= restTemplate.postForObject(getByObjUrl,testUser,User.class);
+        if (user==null)
+            return null;
+        return user;
     }
 
 

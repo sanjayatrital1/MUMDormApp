@@ -1,16 +1,17 @@
 package edu.mum.cs544.apigateway.service;
 
-import edu.mum.cs544.apigateway.domain.Uzer;
+import edu.mum.cs544.apigateway.domain.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface IUserService {
-    public List<Uzer> getAll();
-    public void addUser(Uzer newUser);
-    public Uzer getUser(long id);
-    public void update(Uzer user);
+    public List<User> getAll();
+    public void addUser(User newUser);
+    public User getUser(long id);
+    public void update(User user);
     public void delete(long id);
-    Uzer getUserByEmail(String email);
+    public Long getUserIdByEmail(String email, String password);
+    public User getUserByObject(User user);
 }

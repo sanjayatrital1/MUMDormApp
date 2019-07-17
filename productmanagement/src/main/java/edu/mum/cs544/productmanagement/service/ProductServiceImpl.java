@@ -15,7 +15,7 @@ public class ProductServiceImpl implements IProductService {
     private ProductDao productDao;
     @Override
     public Product get(Long id) {
-        return productDao.getOne(id);
+        return productDao.findById(id).get();
     }
 
     @Override
@@ -48,6 +48,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<Product> searchByCategory(String category) {
+        System.out.println("searchBY Product="+productDao.searchByCategory(category));
        return productDao.searchByCategory(category);
     }
 }
