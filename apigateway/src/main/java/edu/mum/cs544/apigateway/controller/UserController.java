@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -46,15 +45,22 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String addUser(@Valid @ModelAttribute User user, BindingResult result, Model model){
+    public String addUser(@Valid @ModelAttribute User user, BindingResult result, Model model, RedirectAttributes msg){
         System.out.println(user);
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "signup";
         }
-
-        userService.addUser(user);
-        return "redirect:/users/all";
+        String userInputEmail=user.getEmail();
+        User dbUser=userService.getUserByEmail(userInputEmail);
+        if(dbUser==null) {
+            userService.addUser(user);
+            return "redirect:/users/all";
+        }
+        else {
+            msg.addFlashAttribute("msg","Email already registered, try another email address");
+            return "redirect:/users/signup";
+        }
     }
 
     @GetMapping("/modify/{id}")
@@ -84,7 +90,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String checkLogIn(String email, String password, Model model, RedirectAttributes redirectAttributes, HttpSession session){
+    public String checkLogIn(String email, String password, Model model, RedirectAttributes redirectAttributes){
 //        System.out.println("printing user input");
 //        System.out.println(email+"\n"+password);
         User user=new User();

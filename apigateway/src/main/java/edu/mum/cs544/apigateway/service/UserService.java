@@ -63,9 +63,9 @@ public class UserService implements IUserService {
 
 
     public User getUserByEmail(String email) {
-        User userId=restTemplate.getForObject(getByEmailUrl,User.class,email);
-        System.out.println("User Id is :"+userId);
-        return userId;
+        User user=restTemplate.getForObject(getByEmailUrl,User.class,email);
+        //System.out.println("User Id is :"+user);
+        return user;
     }
 
     @Override
