@@ -23,8 +23,6 @@ public class ProductProxy implements ProductService {
     private RestTemplate restTemplate;
     Model model;
 
-
-
    private String productIp ="http://172.19.142.34:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
