@@ -18,12 +18,12 @@ public class UserService implements IUserService {
 
 
 
-    private final String getByIdUrl="http://localhost:8082/users/search/{id}";
-    private final String getAllUrl="http://localhost:8082/users/all";
-    private final String getByEmailPasswordUrl="http://localhost:8082/users/lookupuser/{email}/{password}";
-    private final String getByEmailUrl="http://localhost:8082/users/lookupbyemail/{email}";
-    private final String postForSaveUrl="http://localhost:8082/users/create";
-    private final String getByObjUrl="http://localhost:8082/users/lookupbyobject/";
+    private final String getByIdUrl="http://172.19.141.163:8082/users/search/{id}";
+    private final String getAllUrl="http://172.19.141.163:8082/users/all";
+    private final String getByEmailPasswordUrl="http://172.19.141.163:8082/users/lookupuser/{email}/{password}";
+    private final String getByEmailUrl="http://172.19.141.163:8082/users/lookupbyemail/{email}";
+    private final String postForSaveUrl="http://172.19.141.163:8082/users/create";
+    private final String getByObjUrl="http://172.19.141.163:8082/users/lookupbyobject/";
 
     public List<User> getAll() {
         //return userRepository.findAll(Sort.by("userName"));

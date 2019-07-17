@@ -25,7 +25,7 @@
 <nav class="navbar navbar-light bg-dark justify-content-between">
     <a class="navbar-brand" href="/">Online Store</a>
     <div class="" id="smallbar">
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
             <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
             </a> &nbsp;
@@ -41,11 +41,12 @@
 
 
 
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
 
             <a href="/product" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Add Product
             </a>
+
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,7 +133,7 @@
 
                                 </div>
                                     <div class="section">
-                                        <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                                        <a href="/addToCart/">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                                     </div>
                             </div>
 
@@ -188,24 +189,24 @@
 <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content card-body text-left">
-<%--            Cart (${items > 0 ? items : 0})--%>
+          Cart (${items > 0 ? items : 0})
             <h3><i class="fas fa-shopping-cart"></i> cart here</h3>
             <div class="dropdown-divider"></div>
 
             <!-- repeat this for each product -->
-<%--            <c:forEach items="${cart}" var="product">--%>
-<%--                <div id="cartshow" class="row">--%>
-<%--                    <div class="col-sm-3 text-right">--%>
-<%--                        <img src="<c:url value="${product[3]}"  />"  alt="<c:out value="${product[0]}" />">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-5">--%>
-<%--                        <h6 class="mt-0"><c:out value="${product[0]}" /></h6>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-4 text-left">--%>
-<%--                        <span>Quantity <strong><c:out value="${product[6]}" /></strong></span>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
+            <c:forEach items="${cart}" var="product">
+                <div id="cartshow" class="row">
+                    <div class="col-sm-3 text-right">
+                        <img src="<c:url value="${product[3]}"  />"  alt="<c:out value="${product[0]}" />">
+                    </div>
+                    <div class="col-sm-5">
+                        <h6 class="mt-0"><c:out value="${product[0]}" /></h6>
+                    </div>
+                    <div class="col-sm-4 text-left">
+                        <span>Quantity <strong><c:out value="${product[6]}" /></strong></span>
+                    </div>
+                </div>
+            </c:forEach>
 
             <div class="my-4 text-center emptyCart ${items > 0 ? "dnone" : null}">
                 <h3><i class="far fa-frown fa-lg"></i></h3>

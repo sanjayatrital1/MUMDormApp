@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.io.DataInput;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Controller
 public class ProductController {
     @Autowired
@@ -34,6 +37,7 @@ public class ProductController {
 
     @PostMapping(value = "/product/")
     public String addProduct(@ModelAttribute Product product, BindingResult result, Model model, HttpSession session){
+
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "addProduct";
@@ -48,8 +52,19 @@ public class ProductController {
         return "addProduct";
     }
     @GetMapping("/product?category=")
-    public String findByCategory(Model model){
+    public String findByCategory(Model model) {
         model.addAttribute("category");
         return "home";
+    }
+//    @GetMapping("/checkout")
+//    public
+
+    @ModelAttribute("categoryList")
+    public Map<String, String> getCountryList(){
+        Map<String, String> categoryList = new HashMap<String, String>();
+        categoryList.put("NB", "Notebook");
+        categoryList.put("SP", "Smartphone");
+        categoryList.put("AC", "Accessories");
+        return categoryList;
     }
 }
