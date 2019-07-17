@@ -113,7 +113,7 @@
         <div class="col">
 
 
-            <div class="row my-4" id="showData">
+            <div class="row my-4 " id="showData">
                 <div class="display">
                     <div class="row" id="appendData">
                         <c:forEach var="product" items="${product}">

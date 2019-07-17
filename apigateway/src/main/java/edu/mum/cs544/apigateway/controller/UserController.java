@@ -93,7 +93,7 @@ public class UserController {
         String result=userService.getUserByObject(user);
 //        System.out.println("result from query" +result);
         if(result!=null){
-            model.addAttribute("userId", result);
+            model.addAttribute("userId", user.getUid());
             model.addAttribute("username",result);
             return "redirect:/users/";
         }

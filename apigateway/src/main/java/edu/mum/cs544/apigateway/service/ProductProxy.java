@@ -7,8 +7,11 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpSession;
 import java.net.URI;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -18,11 +21,14 @@ import java.util.regex.Pattern;
 public class ProductProxy implements ProductService {
     @Autowired
     private RestTemplate restTemplate;
+    Model model;
+
+
 
    private String productIp ="http://172.19.141.122:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
-    private final String addUrl =productIp+"/product/?uid=1";
+    private final String addUrl =productIp+"/product/?uid=";
 
 
     @Override
@@ -40,8 +46,11 @@ public class ProductProxy implements ProductService {
     }
 
     @Override
-    public void add(Product product) {
-       restTemplate.postForLocation(addUrl, product);
+    public void add(Product product, String uid) {
+        System.out.println("========================");
+        System.out.println(addUrl+uid);
+       restTemplate.postForLocation(addUrl+uid, product);
+
 //        if (uri == null) {
 //            return null;
 //        }

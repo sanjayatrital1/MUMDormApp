@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.DataInput;
 import java.io.IOException;
 import java.util.List;
@@ -32,12 +33,13 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product/")
-    public String addProduct(@ModelAttribute Product product, BindingResult result, Model model){
+    public String addProduct(@ModelAttribute Product product, BindingResult result, Model model, HttpSession session){
         if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "addProduct";
         }
-        productProxy.add(product);
+        String uid = (String) session.getAttribute("userId");
+        productProxy.add(product, uid);
         return "redirect:/";
     }
     @GetMapping(value = "/product")
@@ -45,6 +47,9 @@ public class ProductController {
        model.addAttribute("product",new Product());
         return "addProduct";
     }
-//    @GetMapping("/checkout")
-//    public
+    @GetMapping("/product?category=")
+    public String findByCategory(Model model){
+        model.addAttribute("category");
+        return "home";
+    }
 }
