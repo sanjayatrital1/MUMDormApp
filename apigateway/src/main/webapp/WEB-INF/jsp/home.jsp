@@ -133,7 +133,7 @@
 
                                 </div>
                                     <div class="section">
-                                        <a href="/addToCart/">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                                            <a href="/addToCart/">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                                     </div>
                             </div>
 
