@@ -2,7 +2,9 @@ package edu.mum.cs544.apigateway.controller;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.mum.cs544.apigateway.domain.Cart;
 import edu.mum.cs544.apigateway.domain.Product;
+import edu.mum.cs544.apigateway.service.CartProxy;
 import edu.mum.cs544.apigateway.service.ProductProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +22,19 @@ import java.util.Map;
 public class ProductController {
     @Autowired
     ProductProxy productProxy;
+
+    @Autowired
+    CartProxy cartProxy;
+
     ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/")
     public String getAll( Model model, Product product){
         model.addAttribute("product",productProxy.getAllProduct());
+
+        List<Cart> carts = cartProxy.getAll(1);
+        model.addAttribute("items", carts.size());
+        model.addAttribute("cart", carts);
         return "home";
     }
 
