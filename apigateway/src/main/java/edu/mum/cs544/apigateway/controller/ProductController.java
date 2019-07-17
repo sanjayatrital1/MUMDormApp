@@ -9,9 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.DataInput;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +42,29 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product/")
-    public String addProduct(@ModelAttribute("userId") String userId,@ModelAttribute Product product, BindingResult result, Model model, HttpSession session){
+    public String addProduct(@ModelAttribute("userId") String userId,@ModelAttribute Product product, BindingResult result, Model model,  @RequestParam("file") MultipartFile file) throws IOException {
 
         System.out.println("User Id= "+userId);
         if (result.hasErrors()) {
+            System.out.println("ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
             model.addAttribute("errors", result.getAllErrors());
             return "addProduct";
         }
+
+            if (!file.isEmpty()) {
+                BufferedImage src = ImageIO.read(new ByteArrayInputStream(file.getBytes()));
+                System.out.println(src);
+                System.out.println(file.getName());
+                File destination = new File("C:/Users/sanjaya/IdeaProjects/EALabs/EAProject/cs544EAproject/apigateway/src/main/webapp/resources/img/"+product.getProductName()+product.getId()+".jpg") ;// something like C:/Users/tom/Documents/nameBasedOnSomeId.png
+                ImageIO.write(src,"JPG",destination);
+//                ImageIO.createImageOutputStream(new File(""));
+                //Save the id you have used to create the file name in the DB. You can retrieve the image in future with the ID.
+            product.setImage(destination.getName());
+                System.out.println(destination.getPath());
+                System.out.println(destination.getName());
+                System.out.println(destination.getAbsoluteFile());
+            }
+        System.out.println("SUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCCESSSSSSSSSS");
         productProxy.add(product, userId);
         return "redirect:/";
     }

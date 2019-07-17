@@ -16,14 +16,14 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
+private String userIp ="http://172.19.142.34:8082";
 
-
-    private final String getByIdUrl="http://172.19.141.163:8082/users/search/{id}";
-    private final String getAllUrl="http://172.19.141.163:8082/users/all";
-    private final String getByEmailPasswordUrl="http://172.19.141.163:8082/users/lookupuser/{email}/{password}";
-    private final String getByEmailUrl="http://172.19.141.163:8082/users/lookupbyemail/{email}";
-    private final String postForSaveUrl="http://172.19.141.163:8082/users/create";
-    private final String getByObjUrl="http://172.19.141.163:8082/users/lookupbyobject/";
+    private final String getByIdUrl=userIp+"/users/search/{id}";
+    private final String getAllUrl=userIp+"/users/all";
+    private final String getByEmailPasswordUrl=userIp+"/users/lookupuser/{email}/{password}";
+    private final String getByEmailUrl=userIp+"/users/lookupbyemail/{email}";
+    private final String postForSaveUrl=userIp+"/users/create";
+    private final String getByObjUrl=userIp+"/users/lookupbyobject/";
 
     public List<User> getAll() {
         //return userRepository.findAll(Sort.by("userName"));

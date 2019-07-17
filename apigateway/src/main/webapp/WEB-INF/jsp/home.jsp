@@ -120,11 +120,11 @@
                         <c:forEach var="product" items="${product}">
 
                             <div class="card custom-card">
-                              <a href="/productPage/${product.id}" >${product.image}</a>
+                              <a href="/productPage/${product.id}" >
                             <%--                                <a href="/product?id=${data[i].id}">--%>
 <%--                                --%>
-<%--                                    <img class="card-img-top" src="${data[i].picture}" alt="${data[i].name}"/>--%>
-<%--                                </a>--%>
+                                    <img class="card-img-top" src="../../resources/img/${product.image}" alt="${product.productName}"/>
+                                </a>
                                 <div class="card-body text-truncate">
                                     <h4 class="card-title">
                                         <p><h5>${product.productName}</h5></p>

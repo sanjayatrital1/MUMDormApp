@@ -25,7 +25,7 @@ public class ProductProxy implements ProductService {
 
 
 
-   private String productIp ="http://172.19.141.122:8083";
+   private String productIp ="http://172.19.142.34:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
     private final String addUrl =productIp+"/product/?uid=";
@@ -47,9 +47,10 @@ public class ProductProxy implements ProductService {
 
     @Override
     public void add(Product product, String uid) {
-        System.out.println("========================");
-        System.out.println(addUrl+uid);
+//        System.out.println("========================");
+//        System.out.println(addUrl+uid);
        restTemplate.postForLocation(addUrl+uid, product);
+//        restTemplate.postForLocation(addUrl, product);
 
 //        if (uri == null) {
 //            return null;
