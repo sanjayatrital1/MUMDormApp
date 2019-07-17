@@ -12,7 +12,10 @@
 			</tr>
 			<tr>
 				<td>Category</td>
-				<td><form:input path="category" /></td>
+				<td><form:select path="productCategory" /></td>
+				<form:option value="1">Notebook</form:option>
+				<form:option value="2">Smartphone</form:option>
+				<form:option value="3">Accessories</form:option>
 				<td><form:errors path="category" /></td>
 			</tr>
 			<tr>
@@ -27,8 +30,8 @@
 			</tr>
 			<tr>
 				<td>Detail</td>
-				<td><form:input path="detail" /></td>
-				<td><form:errors path="detail" /></td>
+				<td><form:input path="productDetail" /></td>
+				<td><form:errors path="productDetail" /></td>
 			</tr>
 			<tr>
 				<td>Image</td>
