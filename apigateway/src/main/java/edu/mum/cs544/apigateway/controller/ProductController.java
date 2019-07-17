@@ -68,4 +68,10 @@ public class ProductController {
         categoryList.put("AC", "Accessories");
         return categoryList;
     }
+
+    @GetMapping(value = "/productPage/{id}")
+    public String getProduct(@PathVariable long id ,Model model){
+        model.addAttribute("productData",productProxy.get(id));
+        return "product";
+    }
 }
