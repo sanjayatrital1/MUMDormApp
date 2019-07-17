@@ -1,66 +1,47 @@
 package edu.mum.cs544.apigateway.service;
 
+import edu.mum.cs544.apigateway.domain.Cart;
 import edu.mum.cs544.apigateway.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Service
-public class ProductProxy implements ProductService {
+public class CartProxy implements CartService {
     @Autowired
     private RestTemplate restTemplate;
 
    private String productIp ="http://localhost:8083";//"http://172.19.141.122:8083";
-    private final String productUrl = productIp+"/product/{id}";
-    private final String pplUrl = productIp+"/product/";
-    private final String addUrl =productIp+"/product/?uid=1";
+    private final String getAllUrl = productIp+"/cart/{userId}";
+    private final String addUrl = productIp+"/cart/";
+    private final String deleteUrl =productIp+"/cart/remove/{id}";
 
 
     @Override
-    public List<Product> getAllProduct() {
-        ResponseEntity<List<Product>> response =
-                restTemplate.exchange(pplUrl, HttpMethod.GET, null,
-                        new ParameterizedTypeReference<List<Product>>() {
+    public List<Cart> getAll(long userId) {
+        ResponseEntity<List<Cart>> response =
+                restTemplate.exchange(getAllUrl.replaceFirst("\\{userId}",String.valueOf(userId)), HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<Cart>>() {
                         });
         return response.getBody();
     }
 
-    @Override
-    public Product get(long id) {
-        return restTemplate.getForObject(productUrl, Product.class, id);
-    }
 
     @Override
-    public void add(Product product) {
-       restTemplate.postForLocation(addUrl, product);
-//        if (uri == null) {
-//            return null;
-//        }
-//        Matcher m = Pattern.compile(".*/product/(\\d+)").matcher(uri.getPath());
-//        m.matches();
-//        return Long.parseLong(m.group(1));
+    public void add(Cart cart) {
+       restTemplate.postForLocation(addUrl, cart);
+
     }
 
     @Override
     public void delete(long id) {
-        restTemplate.delete(productUrl, id);
+        restTemplate.delete(deleteUrl.replaceFirst("\\{id}",String.valueOf(id)));
     }
 
-    @Override
-    public void update(Product product) {
-        restTemplate.put(productUrl, product, product.getId());
-    }
-//    @Override
-//    public List<Product>getUserProduct(long id){
-//
-//    }
+
 }

@@ -133,7 +133,7 @@
 
                                 </div>
                                     <div class="section">
-                                            <a href="/addToCart/">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                                            <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                                     </div>
                             </div>
 
@@ -194,16 +194,16 @@
             <div class="dropdown-divider"></div>
 
             <!-- repeat this for each product -->
-            <c:forEach items="${cart}" var="product">
+            <c:forEach items="${cart}" var="item">
                 <div id="cartshow" class="row">
-                    <div class="col-sm-3 text-right">
-                        <img src="<c:url value="${product[3]}"  />"  alt="<c:out value="${product[0]}" />">
-                    </div>
+
                     <div class="col-sm-5">
-                        <h6 class="mt-0"><c:out value="${product[0]}" /></h6>
+                        <h6 class="mt-0"><c:out value="${item.getProductName()}" /></h6>
                     </div>
                     <div class="col-sm-4 text-left">
-                        <span>Quantity <strong><c:out value="${product[6]}" /></strong></span>
+                        <span>Quantity <strong><c:out value="${item.getQuantity()}" /></strong></span>
+                    </div> <div class="col-sm-3 text-left">
+                       <a href="/cart/remove/${item.getId()}">&Chi;</a>
                     </div>
                 </div>
             </c:forEach>
