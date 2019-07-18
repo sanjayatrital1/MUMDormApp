@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2fa2949-6c42-4ff4-bb0e-f65b60a7e63e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/resources/img/panda0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/resources/img/panda0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productmanagement/src/main/java/edu/mum/cs544/productmanagement/repository/CartDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productmanagement/src/main/java/edu/mum/cs544/productmanagement/repository/CartDao.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
