@@ -4,9 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
-@Entity
-@Table(name = "role")
+
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +12,7 @@ public class Role {
     private String role;
 
     public Role() {
-        this.role="Admin";
+        this.role="User";
     }
 
     @Override
