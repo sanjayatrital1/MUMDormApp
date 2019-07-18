@@ -20,7 +20,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -83,29 +85,32 @@ public class PaypalService implements PaymentService {
             System.out.println("Rest response:"+ responseEntity.getBody());
             System.out.println("Response Status:"+responseEntity.getStatusCode());
             String resStr = responseEntity.getBody();
-            JSONObject jsonObject = new JSONObject(resStr);
-            System.out.println(jsonObject.get("cart"));
+            JSONObject js = new JSONObject(resStr);
+            System.out.println(js.get("cart"));
+            PaymentDetail pd = new PaymentDetail();
+            pd.setAmount((Double) js.get("amount"));
+            pd.setPayDate(LocalDate.now());
         }
-        else
-            return null;
 
         return null;
     }
 
     @Override
-    public String makePayment(String amnt) {
+    public String makePayment(Double amnt) {
         String paymentStatus="/cancel";
 
         Amount amount = new Amount();
         amount.setCurrency("USD");
-        amount.setTotal(amnt);
+        amount.setTotal(Double.toString(amnt));
 
+        //setShipping and taxes here...
         Details detail = new Details();
 
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
         transaction.setDescription("MumDormApp Payment");
-        transaction.setSoftDescriptor("Test transac");
+        transaction.setSoftDescriptor("Total charged ammount:"+Double.toString(amnt));
+        transaction.setNoteToPayee("Thanks for shopping at MumDormApp");
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.add(transaction);
 

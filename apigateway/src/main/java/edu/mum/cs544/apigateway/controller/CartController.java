@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@SessionAttributes({"username","userId"})
 public class CartController {
     @Autowired
     CartProxy cartProxy;
@@ -48,6 +49,13 @@ public class CartController {
         cartProxy.add(cart);
         return "redirect:/";
     }
+
+    @GetMapping("/checkout")
+    public String getAllCart(Model model, Cart cart){
+        model.addAttribute("cart",cartProxy.getAll(1));
+        return "checkout";
+    }
+
 
 
 

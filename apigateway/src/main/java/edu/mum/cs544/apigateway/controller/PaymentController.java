@@ -1,6 +1,8 @@
 package edu.mum.cs544.apigateway.controller;
 
+import edu.mum.cs544.apigateway.domain.Cart;
 import edu.mum.cs544.apigateway.domain.PaymentDetail;
+import edu.mum.cs544.apigateway.service.CartService;
 import edu.mum.cs544.apigateway.service.PaymentService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    private CartService cartService;
+
     @GetMapping("/")
     public String pay(Model model){
         model.addAttribute("amount",100.0);
@@ -25,9 +30,16 @@ public class PaymentController {
     }
 
     @GetMapping("/pay")
-    public RedirectView payNow(){//@ModelAttribute("amount") String amount
-//        System.out.println("---"+amount);
-        String url = paymentService.makePayment("10");
+    public RedirectView pay(@ModelAttribute("userId") long userId, Model model){
+        Double total = 0.0;
+
+        for(Cart c:cartService.getAll(userId)){
+            total+=c.getPrice();
+        }
+
+        System.out.println("Total:" + total);
+        model.addAttribute("total", total);
+        String url = paymentService.makePayment(total);
         System.out.println(url);
         RedirectView redir = new RedirectView();
         redir.setUrl(url);
@@ -35,7 +47,6 @@ public class PaymentController {
     }
     @GetMapping("/cancel")
     public String cancelled(){
-
         return "pay_cancel";
     }
 
@@ -46,11 +57,15 @@ public class PaymentController {
         model.addAttribute("token",token);
         model.addAttribute("PayerID",PayerID);
 
+        PaymentDetail pd = new PaymentDetail();
         try {
-            PaymentDetail pd = paymentService.logTransaction(paymentId,token,PayerID);
+            pd = paymentService.logTransaction(paymentId,token,PayerID);
+            model.addAttribute("message"," Thank you for shopping at MUM-Dorm App");
         } catch (JSONException e) {
             e.printStackTrace();
+            model.addAttribute("message",e.getLocalizedMessage());
         }
+        model.addAttribute("details",pd);
         return "pay_success";
     }
 
