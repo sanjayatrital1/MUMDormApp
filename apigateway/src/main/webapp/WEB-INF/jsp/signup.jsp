@@ -5,11 +5,15 @@
 	<h1>New SignUp</h1>
 	<form:form modelAttribute="user" action="/users/create" method="post">
 		<table>
-			<tr>
-				<td>User Name</td>
-				<td><form:input path="userName" /></td>
-				<td><form:errors path="userName" /></td>
-			</tr>
+			<div class="form-group">
+				<tr>
+					<td class="col-sm-3 control-label">Username*</td>
+					<div class="col-sm-9">
+						<td><form:input path="userName" /></td>
+						<td><form:errors path="userName" /></td>
+					</div>
+				</tr>
+			</div>
 			<tr>
 				<td>Email</td>
 				<td><form:input path="email" /></td>

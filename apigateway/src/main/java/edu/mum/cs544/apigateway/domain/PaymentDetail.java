@@ -1,0 +1,25 @@
+package edu.mum.cs544.apigateway.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.util.Date;
+
+@Getter
+@Setter
+@ToString
+public class PaymentDetail {
+    String paymentId;
+    String payerId;
+    String payerName;
+    String payerEmail;
+    String shipAddLine1;
+    String shipAddCity;
+    String shipAddState;
+    String shipAddPostalCode;
+    String shipAddCountryCode;
+    Date payDate;
+    Double amount;
+    String remarks;
+}
