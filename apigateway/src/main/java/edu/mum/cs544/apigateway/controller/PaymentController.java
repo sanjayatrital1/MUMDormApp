@@ -70,5 +70,11 @@ public class PaymentController {
         return "pay_success";
     }
 
+    @GetMapping("/paymentDetails")
+    public String getAllPaymentDetails(Model model){
+        model.addAttribute("payDetails",cartService.getAllPayDetails());
+        return "allPayments";
+    }
+
 
 }
