@@ -42,7 +42,7 @@
 
         <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
 
-            <a class="btn btn-success my-2 my-sm-0 btn-sm" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a class="btn btn-success my-2 my-sm-0 btn-sm" href="/users/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </form>
     </div>
 </nav>
