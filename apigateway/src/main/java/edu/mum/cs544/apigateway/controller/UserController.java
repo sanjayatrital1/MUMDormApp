@@ -6,10 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @SessionAttributes({"username","userId"})
@@ -24,6 +26,11 @@ public class UserController {
         return "home";
     }
 
+//    @GetMapping(value = "/logout")
+//    public String logout(SessionStatus status){
+//        status.setComplete();
+//        return "redirect:/users/";
+//    }
 
 
     @GetMapping(value = "/all")
@@ -96,19 +103,29 @@ public class UserController {
         User user=new User();
         user.setEmail(email);
         user.setPassword(password);
+        try {
         User result=userService.getUserByObject(user);
 //        System.out.println("result from query" +result);
-        if(result!=null){
-            model.addAttribute("userId",result.getUid() );
-            model.addAttribute("username",result.getUserName());
-            System.out.println("+++++++++++++++++++");
-            System.out.println(model.containsAttribute("userId"));
-            return "redirect:/";
-        }
-        else {
-            redirectAttributes.addFlashAttribute("message","Email/Password not matched");
+
+            if (result != null) {
+                model.addAttribute("userId", result.getUid());
+                model.addAttribute("username", result.getUserName());
+                return "redirect:/users/";
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Email/Password not matched");
+                return "redirect:/users/signin";
+            }
+        }catch (Exception e){
+            System.out.println("Exception occured in controller: userService.getUserByObject(user)"+new Date());
             return "redirect:/users/signin";
         }
 
+    }
+
+    @GetMapping("/logout")
+    public String signOut(SessionStatus status){
+        status.setComplete();
+        System.out.println("===================Inside Logout====================");
+        return "redirect:/";
     }
 }

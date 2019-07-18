@@ -2,6 +2,7 @@ package edu.mum.cs544.service;
 
 import edu.mum.cs544.domain.User;
 import edu.mum.cs544.repository.IUserRepository;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,7 +33,7 @@ public class UserService implements IUserService {
 
     @Override
     public User lookupByEmailAndPassword(String email, String password) {
-        return userRepository.fetchUserIdFromEmailAndPassword(email, password);
+        return userRepository.fetchUserFromEmailAndPassword(email, password);
     }
 
     @Override

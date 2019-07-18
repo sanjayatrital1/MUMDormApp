@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
@@ -21,10 +20,11 @@ public class Product {
     @NotEmpty
     private String productCategory;
     private boolean status;
+    @NotEmpty
     private double price;
+    @NotNull
     private int quantity;
     private String productDetail;
-   @NotBlank
     private String image;
     private long userId;
 

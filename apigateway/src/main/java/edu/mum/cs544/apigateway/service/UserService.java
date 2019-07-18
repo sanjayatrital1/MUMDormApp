@@ -16,16 +16,15 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
-private String userIp ="http://172.19.142.34:8082";
-
-    private final String getByIdUrl=userIp+"/users/search/{id}";
-    private final String getAllUrl=userIp+"/users/all";
-    private final String getByEmailPasswordUrl=userIp+"/users/lookupuser/{email}/{password}";
-    private final String getByEmailUrl=userIp+"/users/lookupbyemail/{email}";
-    private final String postForSaveUrl=userIp+"/users/create";
+    private final String userUrl="http://localhost:8082/";
+    private final String getByIdUrl=userUrl+"users/search/{id}";
+    private final String getAllUrl=userUrl+"users/all";
+    private final String getByEmailPasswordUrl=userUrl+"users/lookupuser/{email}/{password}";
+    private final String getByEmailUrl=userUrl+"users/lookupbyemail/{email}";
+    private final String postForSaveUrl=userUrl+"users/create";
     private final String postForUpdateUrl=userUrl+"users/modify";
     private final String postForDeleteUrl=userUrl+"users/remove";
-    private final String getByObjUrl=userIp+"/users/lookupbyobject/";
+    private final String getByObjUrl=userUrl+"users/lookupbyobject/";
 
 
     public List<User> getAll() {
@@ -57,9 +56,8 @@ private String userIp ="http://172.19.142.34:8082";
         restTemplate.postForLocation(postForDeleteUrl,id);
     }
 
-
     @Override
-    public Long getUserIdByEmail(String email, String password) {
+    public Long getUserByEmail(String email, String password) {
         Long userId=restTemplate.getForObject(getByEmailPasswordUrl,Long.class,email,password);
         System.out.println("User Id is :"+userId);
         return userId;
@@ -68,16 +66,16 @@ private String userIp ="http://172.19.142.34:8082";
 
     public User getUserByEmail(String email) {
         User user=restTemplate.getForObject(getByEmailUrl,User.class,email);
-        //System.out.println("User Id is :"+user);
+        System.out.println("User is :"+user);
         return user;
     }
 
     @Override
     public User getUserByObject(User testUser) {
-        User user= restTemplate.postForObject(getByObjUrl,testUser,User.class);
-        if (user==null)
-            return null;
-        return user;
+        return restTemplate.postForObject(getByObjUrl,testUser,User.class);
+//        if (user==null)
+//            return null;
+//        return user;
     }
 
 

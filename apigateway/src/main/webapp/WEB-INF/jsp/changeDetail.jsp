@@ -6,7 +6,7 @@
 <div class="container">
 	<h1>Update Detail:</h1>
 
-	<form:form modelAttribute="user" action="/users/modify/${user.uid}" method="post">
+	<form:form modelAttribute="user" action="/users/modify" method="post">
 		<form:errors path="*" element="div" cssClass="error"/>
 		<table >
 			<tr>
@@ -31,8 +31,8 @@
 			<td>Operation</td>
 			</tr>
 		</table>
-	</form:form>
 	<button type="submit" class="btn btn-secondary">save</button>
+	</form:form>
 
 <form action="/users/remove/${user.uid}" method="get">
 		<button type="submit" class="btn btn-secondary">Delete</button>

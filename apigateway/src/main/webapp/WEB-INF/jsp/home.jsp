@@ -25,8 +25,10 @@
 <nav class="navbar navbar-light bg-dark justify-content-between">
     <a class="navbar-brand" href="/">Online Store</a>
     <div class="" id="smallbar">
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
-            &nbsp;
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+            <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
+                <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
+            </a> &nbsp;
             <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
@@ -39,11 +41,12 @@
 
 
 
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
 
             <a href="/product" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Add Product
             </a>
+
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,7 +55,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a data-toggle="modal" data-target="#cart-modal" class="dropdown-item" ><i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
+                    <a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
                 </div>
             </li>
         </form>
@@ -99,10 +102,10 @@
 
 
             <div class="list-group" id="theFixed">
-                <a href="/filter/all" data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
-                <a href="/filter/NB" data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
-                <a href="/filter/SP" data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
-                <a href="/filter/AC" data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
+                <a data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
+                <a data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
+                <a data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
+                <a data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
             </div>
 
         </div>
@@ -111,17 +114,17 @@
         <div class="col">
 
 
-            <div class="row my-4 " id="showData">
+            <div class="row my-4" id="showData">
                 <div class="display">
                     <div class="row" id="appendData">
                         <c:forEach var="product" items="${product}">
 
                             <div class="card custom-card">
-                              <a href="/productPage/${product.id}" >
-                            <%--                                <a href="/product?id=${data[i].id}">--%>
+                                ${product.image}
+<%--                                <a href="/product?id=${data[i].id}">--%>
 <%--                                --%>
-                                    <img class="card-img-top" src="../../resources/img/${product.image}" alt="${product.productName}"/>
-                                </a>
+<%--                                    <img class="card-img-top" src="${data[i].picture}" alt="${data[i].name}"/>--%>
+<%--                                </a>--%>
                                 <div class="card-body text-truncate">
                                     <h4 class="card-title">
                                         <p><h5>${product.productName}</h5></p>
@@ -129,12 +132,9 @@
                                     <p><h5>$${product.price}</h5></p>
 
                                 </div>
-                                    <div class="section ${username != null ? "dnone":null} ">
-                                            <a href="/users/signin">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                                    <div class="section">
+                                            <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                                     </div>
-                                <div class="section ${username == null ? "dnone":null} ">
-                                    <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
-                                </div>
                             </div>
 
 

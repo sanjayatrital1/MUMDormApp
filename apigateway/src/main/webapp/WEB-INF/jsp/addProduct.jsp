@@ -3,7 +3,7 @@
 
 <div class="container">
     <h1>Add Product</h1>
-    <form:form modelAttribute="product" action="/product/" method="post" enctype="multipart/form-data">
+    <form:form modelAttribute="product" action="/product/" method="post">
         <table>
             <tr>
                 <td>Product Name</td>
@@ -12,7 +12,7 @@
             </tr>
             <tr>
 
-                <td>Category</td>
+                <td><form:label path="productCategory">Category</form:label></td>
                 <td>
                     <form:select path="productCategory">
                         <form:option value="NONE" label="Select"/>
@@ -42,9 +42,8 @@
                     <td><form:errors path="image" /></td>--%>
 
                     <%--<td><input type = "submit" value = "Upload File" /></td>--%>
-                <td>Select a file to upload</td>
-                <td><form hidden><input type="file" name="file"/></form></td>
-<%--                <td><form:hidden path="image" id="img" /></td>--%>
+                <td><form:label path="image">Select a file to upload</form:label></td>
+                <td><input type="file" name="image"/></td>
             </tr>
         </table>
         <button type="submit" class="btn btn-outline-success">Add Product</button>
