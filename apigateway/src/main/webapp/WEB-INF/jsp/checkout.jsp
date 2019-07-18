@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -113,8 +114,7 @@
                 <td colspan="2" class="hidden-xs"></td>
               <td class="hidden-xs text-center"><strong>Total</strong> <c:out value = "${total}"></c:out></td>
                 <td>
-                    <a href="/checkout/pay"
-                       class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                    <a href="/payment/pay" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
                 </td>
             </tr>
             </tfoot>
