@@ -52,7 +52,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a data-toggle="modal" data-target="#cart-modal" class="dropdown-item" ><i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
+                    <a class="dropdown-item" href="/users/logout"><i class="fas fa-sign-out-alt"></i> logout</a>
                 </div>
             </li>
         </form>
@@ -115,6 +115,7 @@
                 <div class="display">
                     <div class="row" id="appendData">
                         <c:forEach var="product" items="${product}">
+                            <c:if test="${product.status}">
 
                             <div class="card custom-card">
                               <a href="/productPage/${product.id}" >
@@ -137,7 +138,7 @@
                                 </div>
                             </div>
 
-
+                            </c:if>
                         </c:forEach>
 
 
@@ -241,9 +242,9 @@
             </div>
         </div>
     </div>
+
 </footer>
 <!--Bottom Footer-->
-
 </body>
 
 </html>

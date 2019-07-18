@@ -43,7 +43,7 @@ public class ProductController {
         return productService.findByUser(uid);
     }
 
-    @PutMapping(value = "/product/{id}")
+    @PutMapping(value = "/product/update/{id}")
     public void update(@PathVariable long id, @RequestBody Product product){
         if(id != product.getId()){
             throw new IllegalArgumentException();

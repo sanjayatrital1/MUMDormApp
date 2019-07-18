@@ -37,12 +37,12 @@ public class ProductController {
     ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/")
-    public String getAll( Model model, Product product){
-        model.addAttribute("product",productProxy.getAllProduct());
+    public String getAll(Model model, Product product){
 
-        List<Cart> carts = cartProxy.getAll(1);
-        model.addAttribute("items", carts.size());
-        model.addAttribute("cart", carts);
+        model.addAttribute("product",productProxy.getAllProduct());
+        System.out.println(model.containsAttribute("username"));
+
+
         return "home";
     }
 
@@ -81,6 +81,10 @@ public class ProductController {
     }
     @GetMapping(value = "/product")
     public String getProduct(Model model){
+        if(!model.containsAttribute("userId")){
+            model.addAttribute("message","This is currently unavailable");
+            return "errorMsg";
+        }
        model.addAttribute("product",new Product());
         return "addProduct";
     }
@@ -89,8 +93,6 @@ public class ProductController {
         model.addAttribute("category");
         return "home";
     }
-//    @GetMapping("/checkout")
-//    public
 
     @ModelAttribute("categoryList")
     public Map<String, String> getCountryList(){
@@ -118,4 +120,11 @@ public class ProductController {
         }
     return "home";
     }
+
+    @GetMapping("/error")
+    public String errorMsg(Model model){
+        model.addAttribute("message","This is unavailable");
+        return "errorMsg";
+    }
+
 }
