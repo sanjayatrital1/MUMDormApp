@@ -12,9 +12,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
+@SessionAttributes({"username","userId"})
 public class CartController {
     @Autowired
     CartProxy cartProxy;
@@ -24,22 +26,28 @@ public class CartController {
     ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/cart")
-    public String getAll( Model model, Cart cart){
-        model.addAttribute("cart",cartProxy.getAll(1));
+    public String getAll(@ModelAttribute("userId") String userId, Model model, Cart cart){
+        System.out.println("uid enter1:"+userId);
+        List<Cart> carts = cartProxy.getAll(Long.parseLong(userId));
+        model.addAttribute("cart",carts);
+
+        model.addAttribute("items", carts.size());
+        System.out.println("size of cart =========="+carts.size());
         return "home";
     }
 
     @GetMapping("/cart/remove/{id}")
     public String  removeCartItem(@PathVariable(name = "id") long id ){
         cartProxy.delete(id);
-        return "redirect:/";
+        return "redirect:/checkout";
     }
 
     @GetMapping(value = "/cart/add/{productId}")
-    public String addToCart(@PathVariable(name = "productId") long productId){
+    public String addToCart(@ModelAttribute("userId") String userId, @PathVariable(name = "productId") long productId){
         Cart cart = new Cart();
         Product product = productProxy.get(productId);
-        cart.setUserId(1);
+        cart.setUserId(Long.parseLong(userId));
+        System.out.println("UserId" + userId);
         cart.setProductId(productId);
         cart.setProductName(product.getProductName());
         cart.setQuantity(1);
@@ -50,10 +58,12 @@ public class CartController {
     }
 
     @GetMapping("/checkout")
-    public String getAllCart( Model model, Cart cart){
-        model.addAttribute("cart",cartProxy.getAll(1));
+    public String getAllCart(@ModelAttribute("userId") String userId, Model model, Cart cart){
+        System.out.println("userid" + userId);
+        model.addAttribute("cart",cartProxy.getAll(Long.parseLong(userId)));
         return "checkout";
     }
+
 
 
 }

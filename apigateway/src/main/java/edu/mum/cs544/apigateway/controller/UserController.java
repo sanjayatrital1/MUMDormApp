@@ -100,6 +100,7 @@ public class UserController {
 //        System.out.println("result from query" +result);
         if(result!=null){
             model.addAttribute("userId",result.getUid() );
+            System.out.println("userId after login:"+result.getUid());
             model.addAttribute("username",result.getUserName());
             System.out.println("+++++++++++++++++++");
             System.out.println(model.containsAttribute("userId"));

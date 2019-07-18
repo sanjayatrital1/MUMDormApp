@@ -16,8 +16,8 @@ public class CartProxy implements CartService {
     @Autowired
     private RestTemplate restTemplate;
 
-   private String productIp ="http://172.19.142.34:8083";//"http://172.19.141.122:8083";
-    private final String getAllUrl = productIp+"/cart/{userId}";
+   private String productIp ="http://localhost:8083";//"http://172.19.141.122:8083";
+    private final String getAllUrl = productIp+"/cart/";
     private final String addUrl = productIp+"/cart/";
     private final String deleteUrl =productIp+"/cart/remove/{id}";
 
@@ -25,7 +25,7 @@ public class CartProxy implements CartService {
     @Override
     public List<Cart> getAll(long userId) {
         ResponseEntity<List<Cart>> response =
-                restTemplate.exchange(getAllUrl.replaceFirst("\\{userId}",String.valueOf(userId)), HttpMethod.GET, null,
+                restTemplate.exchange(getAllUrl+String.valueOf(userId), HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<Cart>>() {
                         });
         return response.getBody();
