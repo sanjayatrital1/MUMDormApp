@@ -16,7 +16,7 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
-private String userIp ="http://172.19.142.34:8082";
+private String userIp ="http://172.19.141.163:8082";
 
     private final String getByIdUrl=userIp+"/users/search/{id}";
     private final String getAllUrl=userIp+"/users/all";
