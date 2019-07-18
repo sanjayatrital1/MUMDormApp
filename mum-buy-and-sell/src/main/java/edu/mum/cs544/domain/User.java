@@ -33,8 +33,7 @@ public class User {
     @Email(message = "example@mum.edu")
     private String email;
 
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
+    @NotNull
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
