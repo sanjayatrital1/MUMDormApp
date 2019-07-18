@@ -1,5 +1,6 @@
 package edu.mum.cs544.controller;
 
+import edu.mum.cs544.domain.Role;
 import edu.mum.cs544.domain.User;
 import edu.mum.cs544.service.UserService;
 import org.springframework.security.access.annotation.Secured;
@@ -12,7 +13,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-
 @RequestMapping(value = "/users")
 public class UserController {
 
@@ -33,7 +33,8 @@ public class UserController {
 
     @PostMapping("/create")
     public RedirectView addUser(@RequestBody User user){
-        System.out.println(user);
+//        System.out.println(user);
+//        user.addRole(new Role());
         userService.addUser(user);
         return new RedirectView("/users/all");
     }
@@ -49,14 +50,14 @@ public class UserController {
         return new RedirectView("/users/all");
     }
 
-    @PutMapping("/modify")
-    public void saveUpdate(@RequestBody User user){
-        userService.update(user);
+//    @PutMapping("/modify")
+//    public void saveUpdate(@RequestBody User user){
+//        userService.update(user);
+//
+//    }
 
-    }
-
-    @DeleteMapping("/remove/{id}")
-    public void deleteUser(@PathVariable long id){
+    @PostMapping("/remove")
+    public void deleteUser(@RequestBody long id){
         userService.delete(id);
     }
 

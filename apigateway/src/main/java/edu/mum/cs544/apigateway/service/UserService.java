@@ -1,5 +1,6 @@
 package edu.mum.cs544.apigateway.service;
 
+import edu.mum.cs544.apigateway.domain.AppEnv;
 import edu.mum.cs544.apigateway.domain.User;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -16,13 +17,21 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
-    private final String userUrl="http://localhost:8082/";
-    private final String getByIdUrl=userUrl+"users/search/{id}";
-    private final String getAllUrl=userUrl+"users/all";
-    private final String getByEmailPasswordUrl=userUrl+"users/lookupuser/{email}/{password}";
-    private final String getByEmailUrl=userUrl+"users/lookupbyemail/{email}";
-    private final String postForSaveUrl=userUrl+"users/create";
-    private final String getByObjUrl=userUrl+"users/lookupbyobject/";
+    private String userIp = AppEnv.getUserService();// ="http://172.19.142.34:8082";
+    {
+        System.out.println("userip:"+userIp);
+    }
+
+    private final String getByIdUrl=userIp+"/users/search/{id}";
+    private final String getAllUrl=userIp+"/users/all";
+    private final String getByEmailPasswordUrl=userIp+"/users/lookupuser/{email}/{password}";
+    private final String getByEmailUrl=userIp+"/users/lookupbyemail/{email}";
+    private final String postForSaveUrl=userIp+"/users/create";
+
+    private final String postForUpdateUrl=userIp+"users/modify";
+    private final String postForDeleteUrl=userIp+"users/remove";
+
+    private final String getByObjUrl=userIp+"/users/lookupbyobject/";
 
 
     public List<User> getAll() {
@@ -46,13 +55,14 @@ public class UserService implements IUserService {
 
 
     public void update(User change) {
-//        userRepository.save(change);
+        restTemplate.postForLocation(postForUpdateUrl,change);
     }
 
 
     public void delete(long id) {
-//        userRepository.deleteById(id);
+        restTemplate.postForLocation(postForDeleteUrl,id);
     }
+
 
     @Override
     public Long getUserByEmail(String email, String password) {

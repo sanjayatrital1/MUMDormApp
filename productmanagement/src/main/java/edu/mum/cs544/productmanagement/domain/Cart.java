@@ -19,8 +19,5 @@ public class Cart {
     private int quantity;
     private double rate;
     private double price;
-
-
-
-
+    private boolean boughtFlag = false;
 }

@@ -8,7 +8,6 @@ import java.util.List;
 public interface ICartService {
     public List<Cart>getAll(long userId);
     public long add(Cart cart);
+    public void update(Cart c);
     public void delete(long id);
-
-
 }

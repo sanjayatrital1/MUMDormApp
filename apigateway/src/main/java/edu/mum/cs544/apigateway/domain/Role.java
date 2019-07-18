@@ -1,24 +1,20 @@
 package edu.mum.cs544.apigateway.domain;
 
 import lombok.Data;
-
-import javax.persistence.*;
+import lombok.Getter;
 
 @Data
-@Entity
-@Table(name = "role")
+@Getter
 public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rid;
-    private String role;
+  private Long rid;
+  private String role;
 
-    public Role() {
-        this.role="Admin";
-    }
+  public Role() {
+    this.role="Admin";
+  }
 
-    @Override
-    public String toString() {
-        return role;
-    }
+  @Override
+  public String toString() {
+    return role;
+  }
 }

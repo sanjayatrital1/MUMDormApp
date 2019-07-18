@@ -14,7 +14,7 @@ public class Role {
     private String role;
 
     public Role() {
-        this.role="Admin";
+        this.role="USER";
     }
 
     @Override

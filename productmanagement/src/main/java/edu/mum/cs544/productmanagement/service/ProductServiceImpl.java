@@ -48,6 +48,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<Product> searchByCategory(String category) {
+        System.out.println("searchBY Product="+productDao.searchByCategory(category));
        return productDao.searchByCategory(category);
     }
 }

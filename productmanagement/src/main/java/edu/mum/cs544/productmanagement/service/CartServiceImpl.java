@@ -20,7 +20,7 @@ public class CartServiceImpl implements ICartService {
 
     @Override
     public List<Cart> getAll(long userId) {
-        return cartDao.findAll();
+        return cartDao.findByUserId(userId);
     }
 
     @Override
@@ -29,6 +29,10 @@ public class CartServiceImpl implements ICartService {
         return p.getId();
     }
 
+    @Override
+    public void update(Cart c) {
+        cartDao.save(c);
+    }
 
 
     @Override

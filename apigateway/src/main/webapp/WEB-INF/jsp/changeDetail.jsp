@@ -31,8 +31,9 @@
 			<td>Operation</td>
 			</tr>
 		</table>
-	</form:form>
-	<button type="submit" class="btn btn-secondary">save</button>
+		<button type="submit" class="btn btn-secondary">save</button>
+</form:form>
+
 
 <form action="/users/remove/${user.uid}" method="get">
 		<button type="submit" class="btn btn-secondary">Delete</button>

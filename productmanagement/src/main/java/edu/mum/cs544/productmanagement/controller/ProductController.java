@@ -1,6 +1,7 @@
 package edu.mum.cs544.productmanagement.controller;
 
 import edu.mum.cs544.productmanagement.domain.Product;
+import edu.mum.cs544.productmanagement.service.IProductService;
 import edu.mum.cs544.productmanagement.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-   private ProductServiceImpl productService;
+   private IProductService productService;
 
     @GetMapping("/product/")
     public List<Product>getAll(){
@@ -42,7 +43,7 @@ public class ProductController {
         return productService.findByUser(uid);
     }
 
-    @PutMapping(value = "/product/{id}")
+    @PutMapping(value = "/product/update/{id}")
     public void update(@PathVariable long id, @RequestBody Product product){
         if(id != product.getId()){
             throw new IllegalArgumentException();
@@ -61,8 +62,8 @@ public class ProductController {
         return new RedirectView("/product/" + id);
     }
 
-    @GetMapping(value = "/product/", params = "category")
-    public List<Product>findByCategory(@RequestParam String category){
+    @GetMapping(value = "/product/category/{category}")
+    public List<Product>findByCategory(@PathVariable String category){
         return productService.searchByCategory(category);
     }
 

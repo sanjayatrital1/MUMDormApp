@@ -21,7 +21,7 @@ public class User {
     @Email(message="Try format like: example@mum.edu")
     private String email;
 
-    @NotNull
+    @NotEmpty
     private String password;
 
     private Set<Role> roles;
