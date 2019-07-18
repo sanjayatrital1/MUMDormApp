@@ -1,7 +1,9 @@
 package edu.mum.cs544.productmanagement.controller;
 
 import edu.mum.cs544.productmanagement.domain.Cart;
+import edu.mum.cs544.productmanagement.domain.PaymentDetail;
 import edu.mum.cs544.productmanagement.domain.Product;
+import edu.mum.cs544.productmanagement.repository.PaymentDetailDao;
 import edu.mum.cs544.productmanagement.service.CartServiceImpl;
 import edu.mum.cs544.productmanagement.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class CartController {
     @Autowired
    private CartServiceImpl cartService;
 
+    @Autowired
+    private PaymentDetailDao paymentDetailDao;
+
     @GetMapping("/cart/{userId}")
     public List<Cart>getAll(@PathVariable(name = "userId") long userId){
         return cartService.getAll(userId);
@@ -28,14 +33,23 @@ public class CartController {
         return cartService.add(cart);
     }
 
-
-
     @DeleteMapping(value = "/cart/remove/{id}")
     public void delete(@PathVariable long id){
         cartService.delete(id);
     }
 
+    @GetMapping("/paymentDetail")
+    public List<PaymentDetail> getAll(){
+        return paymentDetailDao.findAll();
+    }
 
+@PostMapping("/paymentDetail/add")
+    public boolean addPaymentDetail(@RequestBody PaymentDetail paymentDetail){
+        if (paymentDetailDao.save(paymentDetail) != null){
+            return true;
+        }
+        return false;
+}
 
 
 }

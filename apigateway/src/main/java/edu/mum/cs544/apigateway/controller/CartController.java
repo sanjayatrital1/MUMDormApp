@@ -58,12 +58,13 @@ public class CartController {
     }
 
     @GetMapping("/checkout")
+
     public String getAllCart(@ModelAttribute("userId") String userId, Model model, Cart cart){
         System.out.println("userid" + userId);
         model.addAttribute("cart",cartProxy.getAll(Long.parseLong(userId)));
+
         return "checkout";
     }
-
 
 
 }
