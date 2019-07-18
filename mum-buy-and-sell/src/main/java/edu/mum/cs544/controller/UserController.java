@@ -2,6 +2,7 @@ package edu.mum.cs544.controller;
 
 import edu.mum.cs544.domain.User;
 import edu.mum.cs544.service.UserService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class UserController {
 
     @PostMapping("/create")
     public RedirectView addUser(@RequestBody User user){
-        System.out.println(user);
+//        System.out.println(user);
         userService.addUser(user);
         return new RedirectView("/users/all");
     }
@@ -47,24 +48,19 @@ public class UserController {
         return new RedirectView("/users/all");
     }
 
-    @PutMapping("/modify")
-    public void saveUpdate(@RequestBody User user){
-        userService.update(user);
+//    @PutMapping("/modify")
+//    public void saveUpdate(@RequestBody User user){
+//        userService.update(user);
+//
+//    }
 
-    }
-
-    @DeleteMapping("/remove/{id}")
-    public void deleteUser(@PathVariable long id){
+    @PostMapping("/remove")
+    public void deleteUser(@RequestBody long id){
         userService.delete(id);
     }
 
-    @GetMapping("/lookupuser/{email}/{password}")
-    public User getUserId(@PathVariable String email,@PathVariable String password){
-        System.out.println(email);
-        return userService.lookupByEmailAndPassword(email,password);
-    }
     @GetMapping("/lookupbyemail/{email}")
-    public User findUserIdFromEmail(@PathVariable String email){
+    public User findUserFromEmail(@PathVariable String email){
         return userService.lookupByEmail(email);
     }
 

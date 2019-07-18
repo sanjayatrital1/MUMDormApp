@@ -87,9 +87,26 @@ public class PaypalService implements PaymentService {
             String resStr = responseEntity.getBody();
             JSONObject js = new JSONObject(resStr);
             System.out.println(js.get("cart"));
+
             PaymentDetail pd = new PaymentDetail();
-            pd.setAmount((Double) js.get("amount"));
+            JSONObject tran = (JSONObject) js.getJSONArray("transactions").get(0);
+
+            JSONObject payerInfo = js.getJSONObject("payer").getJSONObject("payer_info");
+            String am = tran.getJSONObject("amount").get("total").toString();
+            pd.setAmount(Double.parseDouble(am));
             pd.setPayDate(LocalDate.now());
+            pd.setPayerEmail(payerInfo.get("email").toString());
+            pd.setPayerId(payerInfo.get("payer_id").toString());
+            pd.setPayerName(payerInfo.get("first_name").toString()+" "+payerInfo.get("last_name").toString());
+            pd.setPaymentId(js.get("id").toString());
+            JSONObject shipAd = payerInfo.getJSONObject("shipping_address");
+            pd.setShipAddCity(shipAd.get("city").toString());
+            pd.setShipAddCountryCode(shipAd.get("country_code").toString());
+            pd.setShipAddLine1(shipAd.get("line1").toString());
+            pd.setShipAddPostalCode(shipAd.get("postal_code").toString());
+            pd.setShipAddState(shipAd.get("state").toString());
+
+            return pd;
         }
 
         return null;

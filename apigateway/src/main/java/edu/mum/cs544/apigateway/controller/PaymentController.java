@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/payment")
+@SessionAttributes({"username","userId"})
 public class PaymentController {
     private final String base = "/payment";
 
@@ -30,7 +31,7 @@ public class PaymentController {
     }
 
     @GetMapping("/pay")
-    public RedirectView pay(@ModelAttribute("userId") long userId, Model model){
+    public RedirectView pay(@ModelAttribute("userId") Long userId, Model model){
         Double total = 0.0;
 
         for(Cart c:cartService.getAll(userId)){
@@ -65,7 +66,7 @@ public class PaymentController {
             e.printStackTrace();
             model.addAttribute("message",e.getLocalizedMessage());
         }
-        model.addAttribute("details",pd);
+        model.addAttribute("pd",pd);
         return "pay_success";
     }
 

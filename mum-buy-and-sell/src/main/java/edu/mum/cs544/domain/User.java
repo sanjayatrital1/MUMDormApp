@@ -1,15 +1,23 @@
 package edu.mum.cs544.domain;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.springframework.security.core.Authentication;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class User {
     @Id
@@ -28,67 +36,22 @@ public class User {
     @NotNull
     private String password;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "uid"), inverseJoinColumns = @JoinColumn(name = "rid"))
+    private Set<Role> roles;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "addressId")
     @Fetch(FetchMode.JOIN)
     private Address addr;
 
-    public User() {
+
+    public void addRole(Role role){
+        roles.add(role);
     }
 
-//    public User(String email, String password){
-//        this.email=email;
-//        this.password=password;
-//    }
-
-//    public User(String userName, String email, String password) {
-//        this.userName = userName;
-//        this.email = email;
-//        this.password = password;
-//    }
-
-    public Long getUid() {
-        return uid;
-    }
-
-    public void setAddress(Address add){
-        addr=add;
-    }
-    public void setUid(Long uid) {
-        this.uid = uid;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Address getAddr() {
-        return addr;
-    }
-
-    public void setAddr(Address addr) {
-        this.addr = addr;
-    }
+    @Transient
+    Authentication auth;
 
     @Override
     public String toString() {
@@ -97,6 +60,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", roles=" + roles +
                 ", addr=" + addr +
                 '}';
     }

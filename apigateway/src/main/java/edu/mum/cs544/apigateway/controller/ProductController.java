@@ -37,12 +37,11 @@ public class ProductController {
     ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/")
-    public String getAll( Model model, Product product){
+    public String getAll(Model model, Product product){
         model.addAttribute("product",productProxy.getAllProduct());
+        System.out.println(model.containsAttribute("username"));
 
-        List<Cart> carts = cartProxy.getAll(1);
-        model.addAttribute("items", carts.size());
-        model.addAttribute("cart", carts);
+
         return "home";
     }
 
