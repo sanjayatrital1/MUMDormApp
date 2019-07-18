@@ -39,6 +39,7 @@ public class ProductController {
     @GetMapping("/")
     public String getAll(Model model, Product product){
         model.addAttribute("product",productProxy.getAllProduct());
+        System.out.println(model.containsAttribute("username"));
 
 
         return "home";

@@ -8,5 +8,6 @@ import java.util.List;
 
 
 public interface CartDao extends JpaRepository<Cart, Long> {
+
    public List<Cart> findByUserId(long userId);
 }

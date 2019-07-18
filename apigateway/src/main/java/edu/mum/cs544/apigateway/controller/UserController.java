@@ -116,8 +116,14 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String signOut(SessionStatus status){
+    public String signOut(SessionStatus status,Model model){
         status.setComplete();
+        model.addAttribute("username",false);
+        model.addAttribute("userId",false);
+        System.out.println("===================Inside Logout====================");
+        System.out.println( model.containsAttribute("username"));
+        System.out.println( model.containsAttribute("userId"));
+
         System.out.println("===================Inside Logout====================");
         return "redirect:/";
     }
