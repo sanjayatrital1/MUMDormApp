@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2fa2949-6c42-4ff4-bb0e-f65b60a7e63e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/resources/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/resources/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/signin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/signin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/signup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/resources/img/panda0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/resources/img/panda0.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -49,7 +44,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="width" value="1346" />
     <option name="height" value="735" />
@@ -159,7 +154,7 @@
     <option name="totallyTimeSpent" value="5203000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
