@@ -115,6 +115,7 @@
                 <div class="display">
                     <div class="row" id="appendData">
                         <c:forEach var="product" items="${product}">
+                            <c:if test="${product.status}">
 
                             <div class="card custom-card">
                               <a href="/productPage/${product.id}" >
@@ -137,7 +138,7 @@
                                 </div>
                             </div>
 
-
+                            </c:if>
                         </c:forEach>
 
 
@@ -241,6 +242,7 @@
             </div>
         </div>
     </div>
+
 </footer>
 <!--Bottom Footer-->
 </body>

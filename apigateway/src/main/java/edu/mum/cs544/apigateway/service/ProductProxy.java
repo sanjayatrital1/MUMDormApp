@@ -21,10 +21,10 @@ import java.util.regex.Pattern;
 public class ProductProxy implements ProductService {
     @Autowired
     private RestTemplate restTemplate;
-    Model model;
 
-   private String productIp ="http://172.19.144.129PAY:8083";
+   private String productIp ="http://172.19.144.129:8083";
     private final String productUrl = productIp+"/product/{id}";
+    private final String updateProductUrl = productIp+"/product/update/{id}";
     private final String pplUrl = productIp+"/product/";
     private final String addUrl =productIp+"/product/?uid=";
     private final String findByCategory = productIp+"/product/category/";
@@ -66,7 +66,7 @@ public class ProductProxy implements ProductService {
 
     @Override
     public void update(Product product) {
-        restTemplate.put(productUrl, product, product.getId());
+        restTemplate.put(updateProductUrl, product, product.getId());
     }
 
     @Override

@@ -14,4 +14,6 @@ public interface ProductDao extends JpaRepository<Product, Long> {
 
     @Query("select p from Product p where p.productCategory=:category")
     List<Product>searchByCategory(@Param("category")String category);
+
+
 }
