@@ -43,7 +43,10 @@ public class CartController {
     }
 
     @GetMapping(value = "/cart/add/{productId}")
-    public String addToCart(@ModelAttribute("userId") String userId, @PathVariable(name = "productId") long productId){
+    public String addToCart(@ModelAttribute("userId") String userId, @PathVariable(name = "productId") long productId, Model model){
+        List<Cart> carts = cartProxy.getAll(Long.parseLong(userId));
+        model.addAttribute("cart",carts);
+        model.addAttribute("items", carts.size());
         Cart cart = new Cart();
         Product product = productProxy.get(productId);
         cart.setUserId(Long.parseLong(userId));
@@ -58,7 +61,6 @@ public class CartController {
     }
 
     @GetMapping("/checkout")
-
     public String getAllCart(@ModelAttribute("userId") String userId, Model model, Cart cart){
         System.out.println("userid" + userId);
         model.addAttribute("cart",cartProxy.getAll(Long.parseLong(userId)));

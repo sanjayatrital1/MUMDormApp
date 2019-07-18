@@ -87,7 +87,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-<<<<<<< HEAD
+
             <version>LATEST</version>
         </dependency>
 <!--        for Paypal Service-->
@@ -100,14 +100,9 @@
             <groupId>com.vaadin.external.google</groupId>
             <artifactId>android-json</artifactId>
             <version>0.0.20131108.vaadin1</version>
-=======
+
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>5.1.5.RELEASE</version>
->>>>>>> 61f355e649e0c670d23e3dda8ffee3edf8636eec
-        </dependency>
+
     </dependencies>
 
     <build>

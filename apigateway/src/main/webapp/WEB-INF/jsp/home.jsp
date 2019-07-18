@@ -56,6 +56,14 @@
                 </div>
             </li>
         </form>
+
+        <form class="form-inline my-2 my-lg-0 mr-auto ${role == null ? "dnone" : null}">
+
+            <a href="/payment/paymentDetail" class="btn btn-success my-2 my-sm-0 btn-sm" >
+                <i class="fas fa-sign-in-alt"></i> View Payment
+            </a>
+        </form>
+
     </div>
 </nav>
 

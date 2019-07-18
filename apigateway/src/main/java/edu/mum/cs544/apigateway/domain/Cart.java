@@ -12,6 +12,7 @@ public class Cart {
     private String productName;
     private int quantity;
     private double rate;
+    private String image;
     private double price;
 
 

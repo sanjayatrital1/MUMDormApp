@@ -118,20 +118,7 @@
             <h3><i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})</h3>
             <div class="dropdown-divider"></div>
 
-            <!-- repeat this for each product -->
-<%--            <c:forEach items="${cart}" var="product">--%>
-<%--                <div id="cartshow" class="row">--%>
-<%--                    <div class="col-sm-3 text-right">--%>
-<%--                        <img src="<c:url value="${product[3]}"  />"  alt="<c:out value="${product[0]}" />">--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-5">--%>
-<%--                        <h6 class="mt-0"><c:out value="${product[0]}" /></h6>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-sm-4 text-left">--%>
-<%--                        <span>Quantity <strong><c:out value="${product[6]}" /></strong></span>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
+
 
             <div class="my-4 text-center emptyCart ${items > 0 ? "dnone" : null}">
                 <h3><i class="far fa-frown fa-lg"></i></h3>

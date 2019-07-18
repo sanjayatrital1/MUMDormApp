@@ -79,7 +79,7 @@
                     <td data-th="Product">
                         <div class="row">
 
-                            <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."
+                            <div class="col-sm-2 hidden-xs"><img src="../../resources/img/${item.getImage()}" alt="${item.image}"
                                                                  class="img-responsive"/></div>
                             <div class="col-sm-10">
                                 <h4 class="nomargin"><c:out value="${item.getProductName()}"/></h4>
