@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Data
 public class User {
@@ -22,6 +23,8 @@ public class User {
 
     @NotNull
     private String password;
+
+    private Set<Role> roles;
 
     private Address addr;
 
@@ -66,5 +69,17 @@ public class User {
 
     public void setAddr(Address addr) {
         this.addr = addr;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role){
+        roles.add(role);
     }
 }
