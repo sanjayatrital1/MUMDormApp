@@ -23,6 +23,8 @@ private String userIp ="http://172.19.142.34:8082";
     private final String getByEmailPasswordUrl=userIp+"/users/lookupuser/{email}/{password}";
     private final String getByEmailUrl=userIp+"/users/lookupbyemail/{email}";
     private final String postForSaveUrl=userIp+"/users/create";
+    private final String postForUpdateUrl=userUrl+"users/modify";
+    private final String postForDeleteUrl=userUrl+"users/remove";
     private final String getByObjUrl=userIp+"/users/lookupbyobject/";
 
 
@@ -47,13 +49,14 @@ private String userIp ="http://172.19.142.34:8082";
 
 
     public void update(User change) {
-//        userRepository.save(change);
+        restTemplate.postForLocation(postForUpdateUrl,change);
     }
 
 
     public void delete(long id) {
-//        userRepository.deleteById(id);
+        restTemplate.postForLocation(postForDeleteUrl,id);
     }
+
 
     @Override
     public Long getUserIdByEmail(String email, String password) {
