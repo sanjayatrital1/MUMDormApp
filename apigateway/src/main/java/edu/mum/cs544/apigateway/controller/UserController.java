@@ -1,5 +1,6 @@
 package edu.mum.cs544.apigateway.controller;
 
+import edu.mum.cs544.apigateway.domain.Role;
 import edu.mum.cs544.apigateway.domain.User;
 import edu.mum.cs544.apigateway.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 @Controller
-@SessionAttributes({"username","userId"})
+@SessionAttributes({"username","userId","role"})
 @RequestMapping(value = "/users")
 public class UserController {
 
@@ -107,6 +108,10 @@ public class UserController {
         if(result!=null){
             model.addAttribute("userId", result.getUid());
             model.addAttribute("username",result.getUserName());
+            for(Role r:result.getRoles()){
+                if(r.getRole().equals("ADMIN"))
+                    model.addAttribute("role", r.getRole());
+            }
             return "redirect:/users/";
         }
         else {
