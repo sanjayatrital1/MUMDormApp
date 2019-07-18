@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.Date;
 
 @Controller
-@SessionAttributes({"username","userId"})
+@SessionAttributes({"username","userId","role"})
 @RequestMapping(value = "/users")
 public class UserController {
 
@@ -110,6 +110,10 @@ public class UserController {
             if (result != null) {
                 model.addAttribute("userId", result.getUid());
                 model.addAttribute("username", result.getUserName());
+		for(Role r:result.getRoles()){
+                	if(r.getRole().equals("ADMIN"))
+                    	model.addAttribute("role", r.getRole());
+            	}
                 return "redirect:/users/";
             } else {
                 redirectAttributes.addFlashAttribute("message", "Email/Password not matched");
