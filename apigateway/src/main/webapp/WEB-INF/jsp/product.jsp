@@ -57,7 +57,6 @@
         <div class="col-sm-12 card">
             <div class="card-body" id="addClass">
                 <!-- Display block of product-->
-
                 <div class="col-xs-4 item-photo">
                     <img class="card-img-top" id="product-img" src="../../resources/img/${productData.image}" alt="${productData.productName}" />
                 </div>
@@ -75,9 +74,10 @@
                         <a href="/users/signin">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                     </div>
                     <div class="section ${username == null ? "dnone":null} ">
-                        <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                        <a href="/cart/add/${productData.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                     </div>
                 </div>
+
 
             </div>
         </div>
