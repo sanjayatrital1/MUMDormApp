@@ -6,6 +6,7 @@ import edu.mum.cs544.apigateway.domain.Cart;
 import edu.mum.cs544.apigateway.domain.Product;
 import edu.mum.cs544.apigateway.service.CartProxy;
 import edu.mum.cs544.apigateway.service.ProductProxy;
+import edu.mum.cs544.apigateway.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,7 @@ import java.util.Map;
 @SessionAttributes({"username","userId"})
 public class ProductController {
     @Autowired
-    ProductProxy productProxy;
+    ProductService productProxy;
 
     @Autowired
     CartProxy cartProxy;
@@ -39,9 +40,9 @@ public class ProductController {
     public String getAll( Model model, Product product){
         model.addAttribute("product",productProxy.getAllProduct());
 
-//        List<Cart> carts = cartProxy.getAll(1);
-//        model.addAttribute("items", carts.size());
-//        model.addAttribute("cart", carts);
+        List<Cart> carts = cartProxy.getAll(1);
+        model.addAttribute("items", carts.size());
+        model.addAttribute("cart", carts);
         return "home";
     }
 

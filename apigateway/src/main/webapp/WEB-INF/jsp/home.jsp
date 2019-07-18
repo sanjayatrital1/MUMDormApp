@@ -26,9 +26,7 @@
     <a class="navbar-brand" href="/">Online Store</a>
     <div class="" id="smallbar">
         <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
-            <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm" >
-                <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
-            </a> &nbsp;
+            &nbsp;
             <a href="/users/signup" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Signup
             </a> &nbsp;
@@ -46,7 +44,6 @@
             <a href="/product" class="btn btn-success my-2 my-sm-0 btn-sm" >
                 <i class="fas fa-sign-in-alt"></i> Add Product
             </a>
-
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,9 +129,12 @@
                                     <p><h5>$${product.price}</h5></p>
 
                                 </div>
-                                    <div class="section">
-                                            <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                                    <div class="section ${username != null ? "dnone":null} ">
+                                            <a href="/users/signin">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
                                     </div>
+                                <div class="section ${username == null ? "dnone":null} ">
+                                    <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
+                                </div>
                             </div>
 
 
