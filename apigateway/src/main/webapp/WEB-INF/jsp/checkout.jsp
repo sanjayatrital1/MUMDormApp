@@ -16,10 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <%--    <script src="https://kit.fontawesome.com/8fd24b2ea7.js"></script>--%>
-    <%--    <script src="resource/script/script.js"></script>--%>
-    <%--    ${user != null ? null : "<script src='resource/script/checkCookies.js'></script>"}--%>
-    <%--    <script src="resource/script/homeScript.js"></script>--%>
+
 
     <link rel="stylesheet" href="../../resources/css/home.css"/>
     <link rel="stylesheet" href="../../resources/css/style.css"/>
@@ -29,7 +26,7 @@
 <nav class="navbar navbar-light bg-dark justify-content-between">
     <a class="navbar-brand" href="/">CHECK OUT</a>
     <div class="" id="smallbar">
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
             <a data-toggle="modal" data-target="#cart-modal" class="btn btn-success my-2 my-sm-0 btn-sm">
                 <i class="fas fa-shopping-cart"></i> Cart (${items > 0 ? items : 0})
             </a> &nbsp;
@@ -43,136 +40,13 @@
             </a> &nbsp;
         </form>
 
-        <form class="form-inline my-2 my-lg-0 mr-auto ${username != null ? "dnone" : null}">
+        <form class="form-inline my-2 my-lg-0 mr-auto ${username == null ? "dnone" : null}">
 
             <a class="btn btn-success my-2 my-sm-0 btn-sm" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </form>
     </div>
 </nav>
 
-
-<!--Main Contents inside container-->
-
-<!-- Page Content -->
-<div class="container">
-
-    <%-- <div class="row">
-
-         <div class="col">
-
-
-             <div class="row my-4" id="showData">
-                 <div class="display">
-                     <div class="row" id="appendData">
-                         <c:forEach var="product" items="${product}">
-
-                             <div class="card custom-card">
-                                 ${product.image}
- &lt;%&ndash;                                <a href="/product?id=${data[i].id}">&ndash;%&gt;
- &lt;%&ndash;                                &ndash;%&gt;
- &lt;%&ndash;                                    <img class="card-img-top" src="${data[i].picture}" alt="${data[i].name}"/>&ndash;%&gt;
- &lt;%&ndash;                                </a>&ndash;%&gt;
-                                 <div class="card-body text-truncate">
-                                     <h4 class="card-title">
-                                         <p><h5>${product.productName}</h5></p>
-                                     </h4>
-                                     <p><h5>$${product.price}</h5></p>
-
-                                 </div>
-                                     <div class="section">
-                                             <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
-                                     </div>
-                             </div>
-
-
-                         </c:forEach>
-
-
-                     </div>
-                     <div class="row" id="appendData2">
-                         &lt;%&ndash;Display block here&ndash;%&gt;
-                     </div>
-                 </div>
-                 <!-- /.row -->
-
-             </div>
-             <!-- /.col-lg-9 -->
-
-         </div>
-         <!-- /.row -->
-
-     </div>
-     <!-- /.container -->
- </div>--%>
-    <!--End of Main container-->
-
-    <%--
-    <!--Login Modal Content-->
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-        <div class="modal-dialog" role="document">
-            <div class="modal-content loginmodal-container">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-
-                </div>
-                <div class="modal-body">
-                    <form:form action="/users/login" method="post">
-                        <input type="email" name="email" placeholder="Email: example@mum.com"/>
-                        <input type="password" name="password" placeholder="Password">
-                        <div class="dropdown-divider"></div>
-                        <input type="submit" name="login" class="login btn btn-success" value="Login">
-
-                    </form>
-                    <div class="login-help">
-                        <label>Please click  </label><a href="/users/signup"> Register </a><span> If you dont have an Account.</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    --%>
-
-    <%--
-    <!--Cart Modal Content-->
-    <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content card-body text-left">
-              Cart (${items > 0 ? items : 0})
-                <h3><i class="fas fa-shopping-cart"></i> cart here</h3>
-                <div class="dropdown-divider"></div>
-
-                <!-- repeat this for each product -->
-                <c:forEach items="${cart}" var="item">
-                    <div id="cartshow" class="row">
-
-                        <div class="col-sm-5">
-                            <h6 class="mt-0"><c:out value="${item.getProductName()}" /></h6>
-                        </div>
-
-                        <div class="col-sm-4 text-left">
-                            <span>Quantity <strong><c:out value="${item.getQuantity()}" /></strong></span>
-
-                        </div> <div class="col-sm-3 text-left">
-                           <a href="/cart/remove/${item.getId()}">&Chi;</a>
-                        </div>
-                    </div>
-                </c:forEach>
-
-                <div class="my-4 text-center emptyCart ${items > 0 ? "dnone" : null}">
-                    <h3><i class="far fa-frown fa-lg"></i></h3>
-                    <h3>Your cart is empty!</h3>
-                </div>
-
-                <div class="dropdown-divider"></div>
-                <div class="text-right">
-                    <a href="/checkout" class="btn btn-danger checkoutbtn">Checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    --%>
 
 
     <!-- Loader -->
@@ -182,25 +56,6 @@
         </div>
     </div>
 
-
-    <!-- For Reference -->
-    <%-- <c:forEach items="${cart}" var="item">
-     <div id="cartshow" class="row">
-
-         <div class="col-sm-5">
-             <h6 class="mt-0"><c:out value="${item.getProductName()}"/></h6>
-         </div>
-
-         <div class="col-sm-4 text-left">
-             <span>Quantity <strong><c:out value="${item.getQuantity()}"/></strong></span>
-
-         </div>
-         <div class="col-sm-3 text-left">
-             <a href="/cart/remove/${item.getId()}">&Chi;</a>
-         </div>
-     </div>
-     </c:forEach>--%>
-    <!--End of reference -->
 
 
     <!-- Creating checkout-->
