@@ -2,6 +2,7 @@ package edu.mum.cs544.apigateway.controller;
 
 import edu.mum.cs544.apigateway.domain.User;
 import edu.mum.cs544.apigateway.service.UserService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,13 +28,14 @@ public class UserController {
     }
 
 
-
+    @Secured("Admin")
     @GetMapping(value = "/all")
     public String getAllUsers(Model model){
         model.addAttribute("users", userService.getAll());
         return "usersList";
     }
 
+    @Secured("Admin")
     @GetMapping("/search/{id}")
     public String getUser(@PathVariable long id, Model model){
         model.addAttribute("user",userService.getUser(id));
@@ -57,7 +59,7 @@ public class UserController {
         User dbUser=userService.getUserByEmail(userInputEmail);
         if(dbUser==null) {
             userService.addUser(user);
-            return "redirect:/users/all";
+            return "redirect:/users/";
         }
         else {
             msg.addFlashAttribute("msg","Email already registered, try another email address");
