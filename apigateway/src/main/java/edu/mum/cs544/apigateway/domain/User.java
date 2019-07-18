@@ -3,13 +3,10 @@ package edu.mum.cs544.apigateway.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.UniqueElements;
-
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import java.util.Set;
 
 @Data
 public class User {
@@ -21,13 +18,13 @@ public class User {
 
     @SafeHtml
     @NotNull
-
     @Email(message="Try format like: example@mum.edu")
-
     private String email;
 
     @NotNull
     private String password;
+
+    private Set<Role> roles;
 
     private Address addr;
 
@@ -72,5 +69,17 @@ public class User {
 
     public void setAddr(Address addr) {
         this.addr = addr;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role){
+        roles.add(role);
     }
 }

@@ -4,6 +4,6 @@ import edu.mum.cs544.apigateway.domain.PaymentDetail;
 import org.json.JSONException;
 
 public interface PaymentService {
-    public String makePayment(Double amount);
+    public String makePayment(Double amount, String product);
     public PaymentDetail logTransaction(String transactionId, String token, String payerId) throws JSONException;
 }

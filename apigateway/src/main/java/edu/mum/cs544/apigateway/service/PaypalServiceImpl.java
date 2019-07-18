@@ -98,6 +98,8 @@ public class PaypalServiceImpl implements PaymentService {
             pd.setPayerId(payerInfo.get("payer_id").toString());
             pd.setPayerName(payerInfo.get("first_name").toString()+" "+payerInfo.get("last_name").toString());
             pd.setPaymentId(js.get("id").toString());
+            pd.setRemarks(tran.get("description").toString());
+
             JSONObject shipAd = payerInfo.getJSONObject("shipping_address");
             pd.setShipAddCity(shipAd.get("city").toString());
             pd.setShipAddCountryCode(shipAd.get("country_code").toString());
@@ -112,7 +114,7 @@ public class PaypalServiceImpl implements PaymentService {
     }
 
     @Override
-    public String makePayment(Double amnt) {
+    public String makePayment(Double amnt, String products) {
         String paymentStatus="/cancel";
 
         Amount amount = new Amount();
@@ -124,7 +126,7 @@ public class PaypalServiceImpl implements PaymentService {
 
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-        transaction.setDescription("MumDormApp Payment");
+        transaction.setDescription(products);
         transaction.setSoftDescriptor("Total charged ammount:"+Double.toString(amnt));
         transaction.setNoteToPayee("Thanks for shopping at MumDormApp");
         List<Transaction> transactions = new ArrayList<Transaction>();

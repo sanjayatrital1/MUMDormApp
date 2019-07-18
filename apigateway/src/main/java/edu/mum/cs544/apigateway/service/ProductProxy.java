@@ -1,5 +1,6 @@
 package edu.mum.cs544.apigateway.service;
 
+import edu.mum.cs544.apigateway.domain.AppEnv;
 import edu.mum.cs544.apigateway.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,8 +23,7 @@ public class ProductProxy implements ProductService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${productService}")
-    private String productIp;// ="http://172.19.142.34:8083";
+    private String productIp = AppEnv.getProductService();// ="http://172.19.142.34:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
     private final String addUrl =productIp+"/product/?uid=";

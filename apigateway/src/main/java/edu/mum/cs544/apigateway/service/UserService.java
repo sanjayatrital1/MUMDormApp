@@ -1,7 +1,7 @@
 package edu.mum.cs544.apigateway.service;
 
+import edu.mum.cs544.apigateway.domain.AppEnv;
 import edu.mum.cs544.apigateway.domain.User;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,7 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
-    @Value("${userService}")
-    private String userIp;// ="http://172.19.142.34:8082";
+    private String userIp = AppEnv.getUserService();// ="http://172.19.142.34:8082";
     {
         System.out.println("userip:"+userIp);
     }
@@ -63,7 +62,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Long getUserIdByEmail(String email, String password) {
+    public Long getUserByEmail(String email, String password) {
         Long userId=restTemplate.getForObject(getByEmailPasswordUrl,Long.class,email,password);
         System.out.println("User Id is :"+userId);
         return userId;
@@ -72,16 +71,16 @@ public class UserService implements IUserService {
 
     public User getUserByEmail(String email) {
         User user=restTemplate.getForObject(getByEmailUrl,User.class,email);
-        //System.out.println("User Id is :"+user);
+        System.out.println("User is :"+user);
         return user;
     }
 
     @Override
     public User getUserByObject(User testUser) {
-        User user= restTemplate.postForObject(getByObjUrl,testUser,User.class);
-        if (user==null)
-            return null;
-        return user;
+        return restTemplate.postForObject(getByObjUrl,testUser,User.class);
+//        if (user==null)
+//            return null;
+//        return user;
     }
 
 

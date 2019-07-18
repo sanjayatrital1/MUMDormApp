@@ -2,8 +2,11 @@ package edu.mum.cs544.apigateway.controller;
 
 import edu.mum.cs544.apigateway.domain.Cart;
 import edu.mum.cs544.apigateway.domain.PaymentDetail;
+import edu.mum.cs544.apigateway.domain.Product;
 import edu.mum.cs544.apigateway.service.CartService;
 import edu.mum.cs544.apigateway.service.PaymentService;
+import edu.mum.cs544.apigateway.service.ProductService;
+import edu.mum.cs544.apigateway.service.UserService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,12 @@ public class PaymentController {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/")
     public String pay(Model model){
         model.addAttribute("amount",100.0);
@@ -31,16 +40,18 @@ public class PaymentController {
     }
 
     @GetMapping("/pay")
-    public RedirectView pay(@ModelAttribute("userId") Long userId, Model model){
+    public RedirectView pay(@ModelAttribute("userId") String userId, Model model){
         Double total = 0.0;
+        String product="";
 
-        for(Cart c:cartService.getAll(userId)){
+        for(Cart c:cartService.getAll(Long.parseLong(userId))){
             total+=c.getPrice();
+            product = product+"/"+c.getProductName()+"(sold by :"+userService.getUser(productService.get(c.getProductId()).getUserId()).getEmail()+")";
         }
 
         System.out.println("Total:" + total);
         model.addAttribute("total", total);
-        String url = paymentService.makePayment(total);
+        String url = paymentService.makePayment(total, product);
         System.out.println(url);
         RedirectView redir = new RedirectView();
         redir.setUrl(url);
@@ -52,7 +63,7 @@ public class PaymentController {
     }
 
     @GetMapping("/success")
-    public String success(@RequestParam String paymentId, @RequestParam String token, @RequestParam String PayerID, Model model){
+    public String success(@ModelAttribute("userId") String userId, @RequestParam String paymentId, @RequestParam String token, @RequestParam String PayerID, Model model){
         System.out.println("Payment ID:"+paymentId);
         model.addAttribute("paymentId",paymentId);
         model.addAttribute("token",token);
@@ -61,12 +72,22 @@ public class PaymentController {
         PaymentDetail pd = new PaymentDetail();
         try {
             pd = paymentService.logTransaction(paymentId,token,PayerID);
+            if(cartService.addPayDetail(pd))
+                System.out.println("Payment Details added");
             model.addAttribute("message"," Thank you for shopping at MUM-Dorm App");
         } catch (JSONException e) {
             e.printStackTrace();
             model.addAttribute("message",e.getLocalizedMessage());
         }
+
+        for(Cart c:cartService.getAll(Long.parseLong(userId))){
+            Product product = productService.get(c.getProductId());
+            product.setStatus(false);
+            productService.update(product);
+        }
+
         model.addAttribute("pd",pd);
+
         return "pay_success";
     }
 

@@ -23,4 +23,5 @@ public class PaymentDetail {
     LocalDate payDate;
     Double amount;
     String remarks;
+    String seller;
 }
