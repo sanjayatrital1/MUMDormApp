@@ -49,6 +49,11 @@ public class CartController {
         return "redirect:/";
     }
 
+    @GetMapping("/checkout")
+    public String getAllCart( Model model, Cart cart){
+        model.addAttribute("cart",cartProxy.getAll(1));
+        return "checkout";
+    }
 
 
 }
