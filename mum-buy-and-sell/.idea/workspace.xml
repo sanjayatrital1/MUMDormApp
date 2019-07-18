@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2fa2949-6c42-4ff4-bb0e-f65b60a7e63e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/errorMsg.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/service/ProductProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/service/ProductProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/java/edu/mum/cs544/apigateway/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/addProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/addProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apigateway/src/main/webapp/WEB-INF/jsp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mumdormapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mumdormapp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/mum/cs544/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/mum/cs544/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/mum/cs544/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/mum/cs544/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/import.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/import.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productmanagement/src/main/java/edu/mum/cs544/productmanagement/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productmanagement/src/main/java/edu/mum/cs544/productmanagement/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../productmanagement/src/main/java/edu/mum/cs544/productmanagement/repository/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productmanagement/src/main/java/edu/mum/cs544/productmanagement/repository/ProductDao.java" afterDir="false" />
-    </list>
+    <list default="true" id="c2fa2949-6c42-4ff4-bb0e-f65b60a7e63e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
