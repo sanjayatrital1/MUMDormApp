@@ -61,157 +61,39 @@
 
 
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-<div>
-    <table>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel " >
+    <span>Payment ID:${pd.paymentId} || ${message}</span>
+    <table align="center">
         <tr>
-            <td></td>
+            <td>Payer Name(ID):</td><td>${pd.payerName}(${pd.payerId})</td>
         </tr>
+        <tr>
+            <td>Paid Date:</td><td>${pd.payDate}</td>
+        </tr>
+        <tr>
+            <td>Payer Email:</td><td>${pd.payerEmail}</td>
+        </tr>
+        <tr>
+            <td>Shipping Address:</td><td>${pd.shipAddLine1}</td>
+        </tr>
+        <tr>
+            <td></td><td>City:${pd.shipAddCity},State:${pd.shipAddState},Country:${pd.shipAddCountryCode},PostalCode:${pd.shipAddPostalCode}</td>
+        </tr>
+<%--        <tr>--%>
+<%--            <td>Payer ID:</td><td>${pd.payerId}</td>--%>
+<%--        </tr>--%>
     </table>
 </div>
-</div>
-
-<!--Main Contents inside container-->
-
-<!-- Page Content -->
-<div class="container">
-
-    <div class="row">
-
-        <div class="leftbar col-md-4 col-lg-3">
 
 
-            <div class="list-group" id="theFixed">
-                <a href="/filter/all" data-item="all" class="list-group-item"><i class="fas fa-cubes"></i> All</a>
-                <a href="/filter/NB" data-item="notebook" class="list-group-item"><i class="fas fa-laptop"></i> Notebook</a>
-                <a href="/filter/SP" data-item="smartphone" class="list-group-item"><i class="fas fa-mobile-alt"></i> Smartphone</a>
-                <a href="/filter/AC" data-item="accessories" class="list-group-item"><i class="fas fa-headphones-alt"></i> Accessories</a>
-            </div>
-
-        </div>
-        <!-- /.col-lg-3 -->
-
-        <div class="col">
 
 
-            <div class="row my-4 " id="showData">
-                <div class="display">
-                    <div class="row" id="appendData">
-                        <c:forEach var="product" items="${product}">
-
-                            <div class="card custom-card">
-                              <a href="/productPage/${product.id}" >
-                            <%--                                <a href="/product?id=${data[i].id}">--%>
-<%--                                --%>
-                                    <img class="card-img-top" src="../../resources/img/${product.image}" alt="${product.productName}"/>
-                                </a>
-                                <div class="card-body text-truncate">
-                                    <h4 class="card-title">
-                                        <p><h5>${product.productName}</h5></p>
-                                    </h4>
-                                    <p><h5>$${product.price}</h5></p>
-
-                                </div>
-                                    <div class="section ${username != null ? "dnone":null} ">
-                                            <a href="/users/signin">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
-                                    </div>
-                                <div class="section ${username == null ? "dnone":null} ">
-                                    <a href="/cart/add/${product.id}">  <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button></a>
-                                </div>
-                            </div>
 
 
-                        </c:forEach>
-
-
-                    </div>
-                    <div class="row" id="appendData2">
-                        <%--Display block here--%>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-            </div>
-            <!-- /.col-lg-9 -->
-
-        </div>
-        <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-</div>
-<!--End of Main container-->
-
-<!--Login Modal Content-->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog" role="document">
-        <div class="modal-content loginmodal-container">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-
-            </div>
-            <div class="modal-body">
-                <form:form action="/users/login" method="post">
-                    <input type="email" name="email" placeholder="Email: example@mum.com"/>
-                    <input type="password" name="password" placeholder="Password">
-                    <div class="dropdown-divider"></div>
-                    <input type="submit" name="login" class="login btn btn-success" value="Login">
-
-                </form>
-                <div class="login-help">
-                    <label>Please click  </label><a href="/users/signup"> Register </a><span> If you dont have an Account.</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!--Cart Modal Content-->
-<div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content card-body text-left">
-          Cart (${items > 0 ? items : 0})
-            <h3><i class="fas fa-shopping-cart"></i> cart here</h3>
-            <div class="dropdown-divider"></div>
-
-            <!-- repeat this for each product -->
-            <c:forEach items="${cart}" var="item">
-                <div id="cartshow" class="row">
-
-                    <div class="col-sm-5">
-                        <h6 class="mt-0"><c:out value="${item.getProductName()}" /></h6>
-                    </div>
-                    <div class="col-sm-4 text-left">
-                        <span>Quantity <strong><c:out value="${item.getQuantity()}" /></strong></span>
-                    </div> <div class="col-sm-3 text-left">
-                       <a href="/cart/remove/${item.getId()}">&Chi;</a>
-                    </div>
-                </div>
-            </c:forEach>
-
-            <div class="my-4 text-center emptyCart ${items > 0 ? "dnone" : null}">
-                <h3><i class="far fa-frown fa-lg"></i></h3>
-                <h3>Your cart is empty!</h3>
-            </div>
-
-            <div class="dropdown-divider"></div>
-            <div class="text-right">
-                <a href="/checkout" class="btn btn-danger checkoutbtn">Checkout</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Messages -->
 
-<!-- Loader -->
-<div id="loader">
-    <div id="central">
-        <i class="fas fa-sync-alt"></i>
-    </div>
-</div>
+
 
 <!--Bottom Footer-->
 <footer class="bottom section-padding">

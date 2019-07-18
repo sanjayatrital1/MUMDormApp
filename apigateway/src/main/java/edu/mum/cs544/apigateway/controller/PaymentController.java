@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@SessionAttributes({"username","userId"})
 @RequestMapping("/payment")
 public class PaymentController {
     private final String base = "/payment";
@@ -30,10 +31,10 @@ public class PaymentController {
     }
 
     @GetMapping("/pay")
-    public RedirectView pay(@ModelAttribute("userId") long userId, Model model){
+    public RedirectView pay(@ModelAttribute("userId") String userId, Model model){
         Double total = 0.0;
 
-        for(Cart c:cartService.getAll(userId)){
+        for(Cart c:cartService.getAll(Long.parseLong(userId))){
             total+=c.getPrice();
         }
 
@@ -65,7 +66,7 @@ public class PaymentController {
             e.printStackTrace();
             model.addAttribute("message",e.getLocalizedMessage());
         }
-        model.addAttribute("details",pd);
+        model.addAttribute("pd",pd);
         return "pay_success";
     }
 
