@@ -21,9 +21,9 @@ import java.util.regex.Pattern;
 public class ProductProxy implements ProductService {
     @Autowired
     private RestTemplate restTemplate;
-    Model model;
 
-   private String productIp ="http://172.19.142.34:8083";
+    @Value("${productService}")
+    private String productIp;// ="http://172.19.142.34:8083";
     private final String productUrl = productIp+"/product/{id}";
     private final String pplUrl = productIp+"/product/";
     private final String addUrl =productIp+"/product/?uid=";

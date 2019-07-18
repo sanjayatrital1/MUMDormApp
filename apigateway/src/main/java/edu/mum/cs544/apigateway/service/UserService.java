@@ -1,6 +1,7 @@
 package edu.mum.cs544.apigateway.service;
 
 import edu.mum.cs544.apigateway.domain.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,11 @@ public class UserService implements IUserService {
     @Resource
     private RestTemplate restTemplate;
 
-private String userIp ="http://172.19.142.34:8082";
+    @Value("${userService}")
+    private String userIp;// ="http://172.19.142.34:8082";
+    {
+        System.out.println("userip:"+userIp);
+    }
 
     private final String getByIdUrl=userIp+"/users/search/{id}";
     private final String getAllUrl=userIp+"/users/all";

@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class PaypalService implements PaymentService {
+public class PaypalServiceImpl implements PaymentService {
     @Autowired
     private RestTemplate restTemplate;
 
@@ -37,7 +37,7 @@ public class PaypalService implements PaymentService {
     private final String mode = "sandbox";//"paypal";
     private APIContext apiContext;
 
-    public PaypalService() {
+    public PaypalServiceImpl() {
         apiContext = new APIContext(clientId, clientSecret, mode);
     }
 
