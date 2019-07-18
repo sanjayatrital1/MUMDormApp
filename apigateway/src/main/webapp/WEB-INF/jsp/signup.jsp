@@ -12,12 +12,11 @@
 	<script src="https://kit.fontawesome.com/8fd24b2ea7.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container bg-light">
 	<h1>New SignUp</h1>
 	<form:form modelAttribute="user" action="/users/create" method="post">
 
 			<div class="form-group">
-				<tr>
 					<label class="col-sm-3 control-label">Username*</label>
 					<div class="col-sm-9">
 						<form:input path="userName" />
@@ -34,15 +33,16 @@
 					</div>
 
 			</div>
-			<div class="form-group">
+		<div class="form-group">
 
-					<label col-sm-3 control-label>Password</label>
-					<div class="col-sm-9">
-						<form:password path="password" />
-						<form:errors path="password" />
-					</div>
-
+			<label col-sm-3 control-label>Password</label>
+			<div class="col-sm-4">
+				<form:password path="password" />
+				<form:errors path="password" />
 			</div>
+
+		</div>
+
 			<div class="form-group">
 
 					<label col-sm-3 control-label>Address</label>
