@@ -75,17 +75,18 @@
         </dependency>
 
 <!--        to upload file-->
-        <dependency>
+<!--              UnComment this to upload file -->
+<!--         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>LATEST</version>
-        </dependency>
+        </dependency> -->
 
-        <dependency>
+<!--         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>LATEST</version>
-        </dependency>
+        </dependency> -->
 <!--        for Paypal Service-->
         <dependency>
             <groupId>com.paypal.sdk</groupId>
