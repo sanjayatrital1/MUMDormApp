@@ -28,8 +28,8 @@ public class PaypalServiceImpl implements PaymentService {
     private RestTemplate restTemplate;
 
     private final String payUrl = "http://localhost:8081/payment";
-    private final String clientId = "AQd7rwjYpHxq5omYKUZ8JaegD8mWNiY01ZFpZax1Zv-cp7frOLdGJmTjt1Zzp7uiIJ8w9LKQDV5gvYR-";
-    private final String clientSecret = "EGUbTSqeJxRYEgUWLRqp7uKhMj3Y6yOmfz-ZUw14ipsRe1512miyf8AFTo_gfPe3M1UDFZl_I5I3_LbK";
+    private final String clientId = "*------------------Hidden-----------------------*";
+    private final String clientSecret = "*-----------------Secret-----------------------*";
     private final String authUrl = "https://api.sandbox.paypal.com/v1/oauth2/token";
     private final String mode = "sandbox";//"paypal";
     private APIContext apiContext;
